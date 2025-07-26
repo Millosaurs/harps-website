@@ -19,6 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -51,18 +52,20 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="block">
-                <div className="relative w-48 h-48">
-                  <Image
-                    src="/logo.png"
-                    alt="Creator Splash Logo"
-                    fill
-                    className="object-contain"
-                    sizes="128px"
-                    priority
-                  />
+              <Link href="/">
+                <div className="flex items-center">
+                  <div className="relative w-48 h-48">
+                    <Image
+                      src="/logo.png"
+                      alt="Creator Splash Logo"
+                      fill
+                      className="object-contain"
+                      sizes="128px"
+                      priority
+                    />
+                  </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}

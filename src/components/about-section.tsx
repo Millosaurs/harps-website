@@ -33,9 +33,9 @@ export default function AboutSection() {
                 </p>
 
                 <p className="text-lg">
-                  Whether he's streaming, hosting, or making waves (literally
-                  and figuratively), Harp is all about bringing people together
-                  for fun, excitement, and the unexpected.
+                  Whether he&apos;s streaming, hosting, or making waves
+                  (literally and figuratively), Harp is all about bringing
+                  people together for fun, excitement, and the unexpected.
                 </p>
               </div>
             </div>

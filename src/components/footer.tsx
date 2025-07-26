@@ -60,7 +60,7 @@ export default function Footer() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Logo and Description */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-4">
                 <div className="relative w-48 h-48 -m-18 ">
                   <Image
                     src="/logo.png"
@@ -71,14 +71,13 @@ export default function Footer() {
                     priority
                   />
                 </div>
-
                 <h3 className="text-2xl font-black text-gray-900">
                   Creator Splash
                 </h3>
               </div>
 
               <p className="text-gray-700 leading-relaxed">
-                Since 2011 we've been creating adventure maps, events, and
+                Since 2011 we&apos;ve been creating adventure maps, events, and
                 content, and now we bring creators together for the most chaotic
                 Minecraft events on the internet! Got a question for us? Use the
                 Contact page, or email us at{" "}
