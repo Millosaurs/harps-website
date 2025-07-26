@@ -3,14 +3,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  ChevronDown,
-  Youtube,
-  Twitch,
-  Instagram,
-  Twitter,
-  Music,
-} from "lucide-react";
+import { Youtube, Twitch, Instagram, Twitter, Music } from "lucide-react";
 import Navigation from "@/components/navigation";
 import {
   Accordion,
@@ -42,7 +35,7 @@ const faqData = [
   },
   {
     question: "Can I ask Harp to be in my video?",
-    answer: `Harp's schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we're afraid the odds of him joining isn't the greatest.`,
+    answer: `Harp&apos;s schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we&apos;re afraid the odds of him joining isn&apos;t the greatest.`,
   },
   {
     question: "Where can I watch Creator Splash content?",
@@ -155,9 +148,9 @@ export default function AboutPage() {
                   </p>
 
                   <p className="animate-fade-in delay-300">
-                    Whether he's streaming, hosting, or making waves (literally
-                    and figuratively), Harp is all about bringing people
-                    together for fun, excitement, and the unexpected.
+                    Whether he&apos;s streaming, hosting, or making waves
+                    (literally and figuratively), Harp is all about bringing
+                    people together for fun, excitement, and the unexpected.
                   </p>
                 </div>
               </div>
@@ -210,10 +203,10 @@ export default function AboutPage() {
 
                 <div className="space-y-6 text-gray-100 text-lg leading-relaxed">
                   <p className="animate-fade-in delay-200">
-                    The heart of Creator Splash's content is the incredible
+                    The heart of Creator Splash&apos;s content is the incredible
                     community that makes every stream, event, and video even
-                    more fun. Whether it's through chaotic Minecraft moments,
-                    genuinely funny jokes, or legendary event lore, the
+                    more fun. Whether it&apos;s through chaotic Minecraft
+                    moments, genuinely funny jokes, or legendary event lore, the
                     community is all about fun, friendship, and absolute
                     madness.
                   </p>
@@ -251,7 +244,7 @@ export default function AboutPage() {
                     around the world for exciting, chaotic Minecraft challenges.
                     Known for its unpredictable twists and funny moments,
                     Creator Splash is more than just a fun event
-                    competition...it's an experience.
+                    competition...it&apos;s an experience.
                   </p>
 
                   <p className="animate-fade-in delay-300">
@@ -265,9 +258,9 @@ export default function AboutPage() {
                       href="/events"
                       className="text-cyan-400 hover:text-cyan-300 font-bold text-lg transition-all duration-300 underline hover:no-underline inline-flex items-center group"
                     >
-                      → Learn more about Creator Splash
+                      &rarr; Learn more about Creator Splash
                       <span className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300">
-                        →
+                        &rarr;
                       </span>
                     </Link>
                   </div>
@@ -338,9 +331,9 @@ export default function AboutPage() {
                       href="/shop"
                       className="text-cyan-400 hover:text-cyan-300 font-bold text-lg transition-all duration-300 underline hover:no-underline inline-flex items-center group"
                     >
-                      → Shop Creator Splash Merch
+                      &rarr; Shop Creator Splash Merch
                       <span className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300">
-                        →
+                        &rarr;
                       </span>
                     </Link>
                   </div>
@@ -362,10 +355,10 @@ export default function AboutPage() {
             </div>
 
             <p className="text-lg text-gray-300 mb-16 leading-relaxed max-w-3xl mx-auto animate-fade-in delay-200">
-              We get asked lots of questions, lots of times, so we've gathered
-              the most frequently asked ones here. If you've something to ask
-              that's not covered, then do use our contact form and we'll get
-              back to you as soon as we can!
+              We get asked lots of questions, lots of times, so we&apos;ve
+              gathered the most frequently asked ones here. If you&apos;ve
+              something to ask that&apos;s not covered, then do use our contact
+              form and we&apos;ll get back to you as soon as we can!
             </p>
 
             <Accordion
@@ -391,11 +384,11 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* We've worked with Section */}
+        {/* We&apos;ve worked with Section */}
         <section className="py-16 px-4 bg-slate-900">
           <div className="container mx-auto max-w-6xl text-center">
             <h3 className="text-3xl font-black text-white mb-12 animate-fade-in">
-              We've worked with...
+              We&apos;ve worked with...
             </h3>
 
             {/* Partner logos grid with stagger animation */}
@@ -510,7 +503,7 @@ export default function AboutPage() {
                     href="/help"
                     className="hover:text-white transition-colors"
                   >
-                    Help & FAQ
+                    Help &amp; FAQ
                   </Link>
                 </div>
                 <div className="flex space-x-4">
@@ -525,7 +518,7 @@ export default function AboutPage() {
               </div>
 
               <div className="text-gray-500 text-sm pt-4 animate-fade-in delay-500">
-                © 2025 Creator Splash. All rights reserved.
+                &copy; 2025 Creator Splash. All rights reserved.
               </div>
             </div>
           </div>
