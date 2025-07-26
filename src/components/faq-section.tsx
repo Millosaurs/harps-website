@@ -34,8 +34,7 @@ export default function FAQSection() {
     },
     {
       question: "Can I ask Harp to be in my video?",
-      answer:
-        "Harp&apos;s schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we&apos;re afraid the odds of him joining isn&apos;t the greatest. The more notice you can give in advance the better!",
+      answer: `Harp's schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so 're afraid the odds of him joining isn't the greatest. The more notice you can give in advance the better!`,
     },
     {
       question: "Where can I watch Creator Splash content?",
@@ -52,10 +51,10 @@ export default function FAQSection() {
             FAQ
           </h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            We get asked lots of questions, lots of times, so we&apos;ve
-            gathered the most frequently asked ones here. If you&apos;ve
-            something to ask that&apos;s not covered, then do use our contact
-            form and we&apos;ll get back to you as soon as we can!
+            We get asked lots of questions, lots of times, so we've gathered the
+            most frequently asked ones here. If you've something to ask that's
+            not covered, then do use our contact form and we'll get back to you
+            as soon as we can!
           </p>
 
           <div className="space-y-4">
