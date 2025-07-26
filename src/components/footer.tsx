@@ -61,7 +61,7 @@ export default function Footer() {
             {/* Logo and Description */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <div className="relative w-48 h-48 -m-18 ">
+                <div className="relative w-48 h-48 mx-18 ">
                   <Image
                     src="/logo.png"
                     alt="Creator Splash Logo"

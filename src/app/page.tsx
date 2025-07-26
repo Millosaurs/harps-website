@@ -1,10 +1,9 @@
-// app/page.tsx (this will be the home page at "/")
+// app/page.tsx
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
 import InformationSections from "@/components/information-section";
 import FAQSection from "@/components/faq-section";
-
 import Footer from "@/components/footer";
 
 export default function HomePage() {
