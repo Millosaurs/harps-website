@@ -49,7 +49,7 @@ const faqData = [
 ];
 
 export const metadata: Metadata = {
-  title: "About - Creator Splash",
+  title: "Creator Splash",
   description:
     "Learn about Harp and the Creator Splash community - the most chaotic Minecraft events on the internet!",
 };
