@@ -1,20 +1,14 @@
 // src/app/page.tsx
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Youtube, Twitch, Instagram, Twitter, Music } from "lucide-react";
-import Navigation from "@/components/navigation";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import Home from "@/components/Home";
-import About from "@/components/About";
-import Informations from "@/components/Info";
-import Footer from "@/components/footer";
+} from "@/components/ui/accordion"; 
+import Home from "@/components/Home/Home";
+import About from "@/components/Home/About";
+import Informations from "@/components/Home/Info";
 
 const faqData = [
   {
@@ -57,7 +51,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <Navigation />
       <div className="min-h-screen  bg-[#1a202c]">
         {/* Hero Section with Angled Video Background */}
         <Home />
@@ -130,7 +123,6 @@ export default function Page() {
         </section>
 
         {/* Footer with Social Icons */}
-        <Footer />
       </div>
     </>
   );
