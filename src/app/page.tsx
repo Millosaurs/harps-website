@@ -1,12 +1,13 @@
-// app/about/page.tsx
+// app/page.tsx (this will be the home page at "/")
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
 import InformationSections from "@/components/information-section";
 import FAQSection from "@/components/faq-section";
+
 import Footer from "@/components/footer";
 
-export default function Page() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
       <Navigation />
