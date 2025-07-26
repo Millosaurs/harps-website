@@ -1,145 +1,137 @@
-// components/footer.tsx
-import { Youtube, Twitch, Instagram, Twitter, Music } from "lucide-react";
+import {
+  FaYoutube,
+  FaTwitch,
+  FaSpotify,
+  FaInstagram,
+  FaXTwitter,
+} from "react-icons/fa6";
 import Image from "next/image";
 
-export default function Footer() {
-  const socialLinks = [
-    {
-      icon: <Youtube className="w-6 h-6" />,
-      href: "https://youtube.com/@creatorsplash",
-      label: "YouTube",
-      color: "bg-red-500",
-    },
-    {
-      icon: <Twitch className="w-6 h-6" />,
-      href: "https://www.twitch.tv/harp6288/",
-      label: "Twitch",
-      color: "bg-purple-500",
-    },
-    {
-      icon: <Music className="w-6 h-6" />,
-      href: "https://open.spotify.com/user/6mootkdohaai8rb15od6fy0ag",
-      label: "Spotify",
-      color: "bg-green-500",
-    },
-    {
-      icon: <Instagram className="w-6 h-6" />,
-      href: "https://www.instagram.com/harp_6288",
-      label: "Instagram",
-      color: "bg-pink-500",
-    },
-    {
-      icon: <Twitter className="w-6 h-6" />,
-      href: "https://x.com/CreatorSplash_",
-      label: "Twitter",
-      color: "bg-blue-500",
-    },
-  ];
-
+const Footer = () => {
   return (
-    <footer className="py-20 px-4 bg-gray-900">
-      <div className="container mx-auto">
-        <div className="bg-white rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_#000] p-8 lg:p-12">
-          {/* Social Icons */}
-          <div className="flex justify-center space-x-4 mb-12">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-4 ${social.color} text-white rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_#000] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#000] active:translate-x-[3px] active:translate-y-[3px]`}
-                aria-label={social.label}
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
+    <footer className="bg-[#0F4C5C] text-white w-full font-sans [font-family:var(--font-1)] py-8">
+      <div className="max-w-[1200px] mx-auto px-4">
+        {/* Social Icons */}
+        <div className="flex justify-center gap-4 mb-8">
+          <a
+            href="https://youtube.com/@creatorsplash?si=D23xBsHPxKg64dgf"
+            className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#FF0000] hover:-translate-y-0.5 hover:opacity-80 transition"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube size={26} />
+          </a>
+          <a
+            href="https://www.twitch.tv/harp6288/"
+            className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#6441A4] hover:-translate-y-0.5 hover:opacity-80 transition"
+            aria-label="Twitch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitch size={26} />
+          </a>
+          <a
+            href="https://open.spotify.com/user/6mootkdohaai8rb15od6fy0ag?si=d0fe891d989849b0&nd=1&dlsi=5c56579d79ce433b"
+            className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#1DB954] hover:-translate-y-0.5 hover:opacity-80 transition"
+            aria-label="Spotify"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaSpotify size={26} />
+          </a>
+          <a
+            href="https://www.instagram.com/harp_6288"
+            className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-gradient-to-br from-[#f09433] via-[#dc2743] to-[#bc1888] hover:-translate-y-0.5 hover:opacity-80 transition"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={26} />
+          </a>
+          <a
+            href="https://x.com/CreatorSplash_"
+            className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-black hover:-translate-y-0.5 hover:opacity-80 transition"
+            aria-label="Twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaXTwitter size={26} />
+          </a>
+        </div>
 
-          {/* Main Footer Content */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Logo and Description */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="relative w-48 h-48 mr-8">
-                  <Image
-                    src="/logo.png"
-                    alt="Creator Splash Logo"
-                    fill
-                    className="object-contain"
-                    sizes="128px"
-                    priority
-                  />
-                </div>
-                <h3 className="text-2xl font-black text-gray-900">
-                  Creator Splash
-                </h3>
-              </div>
-
-              <p className="text-gray-700 leading-relaxed">
-                Since 2011 we&apos;ve been creating adventure maps, events, and
-                content, and now we bring creators together for the most chaotic
-                Minecraft events on the internet! Got a question for us? Use the
-                Contact page, or email us at{" "}
+        {/* Main Footer Content */}
+        <div className="flex flex-col md:flex-row justify-between items-start w-full mb-8 gap-8">
+          <div className="flex flex-col md:flex-row gap-6 items-center md:items-start flex-1 max-w-[600px]">
+            <div className="w-[100px] h-[100px] flex items-center justify-center flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Creator Splash"
+                className="object-contain"
+                width={100}
+                height={100}
+              />
+            </div>
+            <div className="flex-1">
+              <p className="leading-relaxed text-sm md:text-base">
+                Since 2011 Noxcrew™ have been creating adventure maps, skins and
+                texture packs, and now we sell them on the Minecraft
+                Marketplace! Got a question for us? Use the Contact page, or
+                email us at
                 <a
-                  href="mailto:contact@creatorsplash.com"
-                  className="text-blue-600 hover:text-blue-800 font-bold"
+                  href="mailto:contact@noxcrew.com"
+                  className="underline hover:no-underline ml-1"
                 >
-                  contact@creatorsplash.com
+                  contact@noxcrew.com
                 </a>
               </p>
             </div>
-
-            {/* Links */}
-            <div className="space-y-6">
-              <h4 className="text-xl font-black text-gray-900">
-                Looking for more?
-              </h4>
-              <div className="space-y-4">
+          </div>
+          <div className="flex flex-col items-end md:items-end text-right">
+            <h3 className="mb-2 text-base font-bold">Looking for more?</h3>
+            <div className="flex flex-col items-end gap-1">
+              <div>
                 <a
                   href="https://discord.com/invite/YX2KZyeBeJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-indigo-500 text-white font-black rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_#000] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#000] active:translate-x-[3px] active:translate-y-[3px] hover:bg-indigo-600"
+                  className="hover:underline"
                 >
-                  Join Discord
+                  Discord
                 </a>
-                <div className="flex flex-wrap gap-2 text-gray-700">
-                  <a href="/careers" className="hover:text-gray-900 font-bold">
-                    Careers
-                  </a>
-                </div>
+                <span className="mx-1">•</span>
+                <a href="/careers" className="hover:underline">
+                  Careers
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Bottom Footer */}
-          <div className="mt-12 pt-8 border-t-4 border-black">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              <div className="flex flex-wrap gap-2 text-sm text-gray-600">
-                <a href="/terms" className="hover:text-gray-900">
-                  Terms of Service
-                </a>
-                <span>•</span>
-                <a href="/privacy" className="hover:text-gray-900">
-                  Privacy Notice
-                </a>
-                <span>•</span>
-                <a href="/cookies" className="hover:text-gray-900">
-                  Cookie Policy
-                </a>
-                <span>•</span>
-                <a href="/help" className="hover:text-gray-900">
-                  Help & FAQ
-                </a>
-              </div>
-              <div className="text-sm text-gray-600">
-                © 2025 Creator Splash. All rights reserved.
-              </div>
-            </div>
+        {/* Footer Bottom */}
+        <div className="w-full text-center border-t border-white/20 pt-6">
+          <div className="flex flex-wrap justify-center items-center gap-2 mb-2 text-xs">
+            <a href="/terms" className="hover:underline">
+              Terms of Service
+            </a>
+            <span className="dot">•</span>
+            <a href="/privacy" className="hover:underline">
+              Privacy Notice
+            </a>
+            <span className="dot">•</span>
+            <a href="/cookies" className="hover:underline">
+              Cookie Policy
+            </a>
+            <span className="dot">•</span>
+            <a href="/help" className="hover:underline">
+              Help & FAQ
+            </a>
+          </div>
+          <div className="text-xs opacity-80">
+            © 2025 Creator Splash. All rights reserved.
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
