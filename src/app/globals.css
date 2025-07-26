@@ -154,3 +154,17 @@
 .hover\:animate-shake:hover {
   animation: shake 0.5s infinite;
 }
+
+/* Hide scrollbar for all browsers */
+html,
+body,
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
