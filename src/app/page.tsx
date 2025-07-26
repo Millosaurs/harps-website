@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     "Learn about Harp and the Creator Splash community - the most chaotic Minecraft events on the internet!",
 };
 
-export default function AboutPage() {
+export default function Page() {
   return (
     <>
       <Navigation />
