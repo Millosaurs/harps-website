@@ -1,5 +1,6 @@
-// components/MemberCard.jsx
+// components/MemberCard.tsx
 import React from "react";
+import Image from "next/image";
 
 export interface MemberCardProps {
   avatar?: string;
@@ -23,10 +24,12 @@ export default function MemberCard({
   return (
     <div className="bg-[#1a202c] text-white rounded-xl p-6 flex flex-col items-center w-full max-w-xs mx-auto">
       {avatar ? (
-        <img
+        <Image
           src={`/heads/${avatar}`}
           alt={name}
-          className="w-20 h-20 rounded-full mb-4 object-cover"
+          width={80}
+          height={80}
+          className="rounded-full mb-4 object-cover"
         />
       ) : (
         <div className="w-20 h-20 rounded-full bg-gray-200 mb-4 flex items-center justify-center text-3xl">
