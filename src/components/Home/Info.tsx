@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type InfoBlockProps = {
   image: string;
   title: string;
@@ -24,21 +26,25 @@ function InfoBlock({
   return (
     <div
       className={`
-          flex flex-col lg:flex-row ${reverse ? "lg:flex-row-reverse" : ""}
-          items-center justify-center space-x-20 lg:gap-0
-          text-center lg:text-left
-        `}
+        flex flex-col lg:flex-row ${reverse ? "lg:flex-row-reverse" : ""}
+        items-center justify-center space-x-0 lg:space-x-20 lg:gap-0
+        text-center lg:text-left
+      `}
     >
-      <img
-        src={image}
-        alt={title}
-        className="max-w-[600px] w-full rounded-lg shadow-lg"
-      />
+      <div className="max-w-[600px] w-full">
+        <Image
+          src={image}
+          alt={title}
+          width={600}
+          height={400}
+          className="w-full rounded-lg shadow-lg"
+        />
+      </div>
       <div className="max-w-[600px] w-full px-0 lg:px-8 mt-8 lg:mt-0">
         <h1
           className={`
-              text-4xl md:text-5xl font-extrabold uppercase mb-2 text-white font-sans
-            `}
+            text-4xl md:text-5xl font-extrabold uppercase mb-2 text-white font-sans
+          `}
         >
           {title}
         </h1>
@@ -68,11 +74,11 @@ export default function Informations() {
   return (
     <section
       className="
-          flex flex-col gap-8 mt-[100px] mb-[50px]
-          font-sans  py-8
-          md:gap-[80px] md:mt-[50px]
-          container mx-auto px-4
-        "
+        flex flex-col gap-8 mt-[100px] mb-[50px]
+        font-sans  py-8
+        md:gap-[80px] md:mt-[50px]
+        container mx-auto px-4
+      "
       id="inicio"
     >
       <InfoBlock

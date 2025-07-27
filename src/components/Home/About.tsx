@@ -6,7 +6,7 @@ export default function About() {
       id="about"
       className="
         mt-6 relative text-white overflow-hidden py-32 flex items-center justify-center font-sans
-        [font-family:var(--font-1)] z-0
+         z-0
         lg:py-20
       "
     >
@@ -60,26 +60,36 @@ export default function About() {
         </div>
         <div className="flex-1 relative flex items-center justify-center w-full">
           <div className="relative">
-            <img
-              src="https://imgur.com/J7dEfZF.png"
+            <Image
+              src="/harp_abt.png"
               alt="About Harp"
+              width={400}
+              height={400}
               className="
                 w-full max-w-[400px] rounded-lg shadow-[5px_5px_0px_white] -rotate-3
                 xl:max-w-[300px] xl:rotate-0
               "
+              priority
             />
             {/* Overlay image */}
-            <img
-              src="https://imgur.com/J7dEfZF.png"
-              alt=""
-              aria-hidden
+            <div
               className="
                 pointer-events-none select-none
                 absolute w-[100px] h-[100px] top-[-20px] right-[-20px]
                 xl:w-[60px] xl:h-[60px] xl:top-[-10px] xl:right-[-10px]
               "
               style={{ background: "none" }}
-            />
+              aria-hidden
+            >
+              <Image
+                src="/harp_abt.png"
+                alt=""
+                width={100}
+                height={100}
+                className="w-full h-full"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
       </div>

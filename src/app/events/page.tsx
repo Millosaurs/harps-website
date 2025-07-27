@@ -40,21 +40,21 @@ export default function MCCWebsite() {
       description:
         "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
       image: "/heads/Axolotl_1.png",
-      logoimage: "logo.png",
+      logoimage: "/logo.png",
     },
     {
       title: "Season 1 Merch",
       description:
         "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
       image: "/heads/Axolotl_2.png",
-      logoimage: "logo.png",
+      logoimage: "/logo.png",
     },
     {
       title: "Season 5 Stickers",
       description:
         "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
       image: "/heads/Axolotl_3.png",
-      logoimage: "logo.png",
+      logoimage: "/logo.png",
     },
   ];
 
@@ -311,7 +311,7 @@ export default function MCCWebsite() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-2">
-              MINECRAFT'S BIGGEST
+              MINECRAFT&rsquo;S BIGGEST
             </h2>
             <h1
               className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-blue-900"
@@ -518,11 +518,14 @@ export default function MCCWebsite() {
             {/* Left Side - Large Circular Image */}
             <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-purple-600 to-blue-800 p-3 sm:p-4 shadow-2xl md:z-11 md:mr-4">
-                <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
-                  <img
+                <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center relative">
+                  <Image
                     src={merchSlides[merchSlide].logoimage}
                     alt={merchSlides[merchSlide].title}
-                    className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 object-contain"
+                    width={320}
+                    height={320}
+                    className="object-contain"
+                    priority
                   />
                 </div>
               </div>
@@ -555,11 +558,13 @@ export default function MCCWebsite() {
                   }`}
                   onClick={() => setMerchSlide(idx)}
                 >
-                  <div className="w-full h-full rounded-full flex items-center justify-center">
-                    <img
+                  <div className="w-full h-full rounded-full flex items-center justify-center relative">
+                    <Image
                       src={slide.image}
                       alt={slide.title}
-                      className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
+                      width={48}
+                      height={48}
+                      className="object-contain"
                     />
                   </div>
                 </button>
