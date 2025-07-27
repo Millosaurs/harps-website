@@ -50,7 +50,7 @@ export default function MCCWebsite() {
       logoimage: "/logo.png",
     },
     {
-      title: "Season 5 Stickers",
+      title: "Season 1 Merch",
       description:
         "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
       image: "/heads/Axolotl_3.png",
