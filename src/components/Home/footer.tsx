@@ -9,10 +9,10 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0F4C5C] text-white w-full font-sans [font-family:var(--font-1)] py-8">
+    <footer className="bg-[#0F4C5C] text-white w-full font-sans py-8">
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Social Icons */}
-        <div className="flex justify-center gap-4 mb-8">
+        {/* <div className="flex justify-center gap-4 mb-8">
           <a
             href="https://youtube.com/@creatorsplash?si=D23xBsHPxKg64dgf"
             className="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#FF0000] hover:-translate-y-0.5 hover:opacity-80 transition"
@@ -58,32 +58,28 @@ const Footer = () => {
           >
             <FaXTwitter size={26} />
           </a>
-        </div>
+        </div> */}
 
         {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row justify-between items-start w-full mb-8 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start w-full mb-8 gap-8 mt-8">
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start flex-1 max-w-[600px]">
-            <div className="w-[100px] h-[100px] flex items-center justify-center flex-shrink-0">
+            <div className=" flex items-center justify-center flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Creator Splash"
-                className="object-contain"
-                width={100}
-                height={100}
+                className="object-cover"
+                width={200}
+                height={200}
               />
             </div>
             <div className="flex-1">
               <p className="leading-relaxed text-sm md:text-base">
-                Since 2011 Noxcrew™ have been creating adventure maps, skins and
-                texture packs, and now we sell them on the Minecraft
-                Marketplace! Got a question for us? Use the Contact page, or
-                email us at
-                <a
-                  href="mailto:contact@noxcrew.com"
-                  className="underline hover:no-underline ml-1"
-                >
-                  contact@noxcrew.com
-                </a>
+                Launched in 2026, Creator Splash has been crafting standout
+                Minecraft events that bring the community together through
+                creativity, competition, and collaboration. With each event, we
+                unite creators and fans from around the world to celebrate the
+                best of Minecraft from innovative game modes to unforgettable
+                moments shared across streams and platforms.
               </p>
             </div>
           </div>
@@ -92,14 +88,10 @@ const Footer = () => {
             <div className="flex flex-col items-end gap-1">
               <div>
                 <a
-                  href="https://discord.com/invite/YX2KZyeBeJ"
+                  href="https://discord.com/invite/Fpa9Ps8NdR"
                   className="hover:underline"
                 >
                   Discord
-                </a>
-                <span className="mx-1">•</span>
-                <a href="/careers" className="hover:underline">
-                  Careers
                 </a>
               </div>
             </div>

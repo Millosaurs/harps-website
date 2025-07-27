@@ -10,16 +10,15 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/about", label: "ABOUT" },
-    { href: "/participants", label: "PARTICIPANTS" },
-    { href: "/creatorsplash", label: "CREATOR SPLASH" },
+    { href: "/", label: "ABOUT" },
+    { href: "/teams", label: "TEAMS" },
+     { href: "/events", label: "EVENTS" },
     { href: "/shop", label: "SHOP" },
-    { href: "/news", label: "NEWS" },
-    { href: "/contact", label: "CONTACT US" },
+
   ];
 
   return (
-    <header className="bg-[#1a202c] backdrop-blur-sm sticky top-0 z-50">
+    <header className="bg-[#1a202c] backdrop-blur-sm sticky top-0 py-4 z-50 h-28">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -27,7 +26,7 @@ export default function Navigation() {
             <Image
               src="/logo.png"
               alt="Creator Splash Logo"
-              width={250}
+              width={200}
               height={200}
               className="object-contain"
               priority
