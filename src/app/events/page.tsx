@@ -149,7 +149,7 @@ export default function MCCWebsite() {
 
         {/* Centered Video Card Container */}
         <div className="relative z-30 container mx-auto px-4 h-full flex items-center justify-center">
-          <div className="relative max-w-9xl w-full">
+          <div className="relative max-w-6xl w-full">
             {/* Main Video Card */}
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <video
@@ -157,7 +157,7 @@ export default function MCCWebsite() {
                 muted
                 loop
                 playsInline
-                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-140 object-cover mb-10 rounded-lg"
+                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-130 object-cover rounded-lg"
               >
                 <source src="/intro.mp4" type="video/mp4" />
               </video>
@@ -216,7 +216,7 @@ export default function MCCWebsite() {
             "polygon(0 20%, 5% 10%, 10% 20%, 15% 10%, 20% 20%, 25% 10%, 30% 20%, 35% 10%, 40% 20%, 45% 10%, 50% 20%, 55% 10%, 60% 20%, 65% 10%, 70% 20%, 75% 10%, 80% 20%, 85% 10%, 90% 20%, 95% 10%, 100% 20%, 100% 100%, 0 100%)",
         }}
       >
-        <div className="container mx-auto px-4 pt-30 sm:pt-20 md:pt-25 lg:pt-30">
+        <div className="container mx-auto px-0 pt-30 sm:pt-20 md:pt-25 lg:pt-30 max-w-6xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <Card className="bg-blue-500 text-white p-6 hover:bg-blue-600 transition-colors cursor-pointer">
               <a
@@ -276,18 +276,18 @@ export default function MCCWebsite() {
       {/* Contest Section with Wavy Bottom */}
       <section className="relative bg-yellow-400 py-16">
         {/* Blocky Top Border */}
-        <div className="absolute top-0 left-0 w-full h-4 bg-yellow-400">
+        <div className="absolute top-0 left-0 w-full h-4 bg-[#1a202c]">
           <div className="flex h-full">
             {[
-              100, 75, 100, 50, 100, 75, 50, 100, 75, 100, 50, 75, 100, 50, 100,
-              75, 50, 100, 75, 100, 50, 100, 75, 50,
+              100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20,
+              100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20,
             ].map((height, i) => (
               <div
                 key={i}
-                className="flex-1 bg-yellow-500"
+                className="flex-1 bg-yellow-400"
                 style={{
                   height: `${height}%`,
-                  alignSelf: "flex-end",
+                  marginTop: `${100 - height}%`,
                 }}
               />
             ))}
