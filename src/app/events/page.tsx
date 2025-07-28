@@ -316,7 +316,9 @@ export default function MCCWebsite() {
         </div> */}
         <div className="container mx-auto px-24 ">
           <div className="text-left mb-12">
-            <Image src="/test5.png" alt="" width={300} height={300} />
+            <h2 className="text-4xl font-extrabold text-white mb-2">
+              Creator Splash
+            </h2>
             <h1
               className="text-9xl font-bold text-slate-900"
               style={{ fontFamily: "Impact, sans-serif" }}
