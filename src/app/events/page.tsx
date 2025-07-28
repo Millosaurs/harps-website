@@ -134,6 +134,7 @@ export default function MCCWebsite() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Hero Section with Background Video */}
       <section className="relative h-162 sm:h-96 md:h-120 lg:h-162 overflow-hidden">
         {/* Blurred Background Video */}
         <video
@@ -156,7 +157,7 @@ export default function MCCWebsite() {
                 muted
                 loop
                 playsInline
-                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-120 object-cover"
+                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-140 object-cover mb-10 rounded-lg"
               >
                 <source src="/intro.mp4" type="video/mp4" />
               </video>
@@ -437,7 +438,7 @@ export default function MCCWebsite() {
                         fill
                         className="object-cover rounded-xl"
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                        unoptimized={true} 
+                        unoptimized={true}
                       />
 
                       {/* Dark overlay for better text readability */}
