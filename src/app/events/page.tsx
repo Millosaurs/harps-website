@@ -316,24 +316,12 @@ export default function MCCWebsite() {
         </div> */}
         <div className="container mx-auto px-24 ">
           <div className="text-left mb-12">
-            <h2 className="relative text-4xl font-bold mb-2 tracking-wide">
-              <span
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  color: "transparent",
-                  WebkitTextStroke: "4px black",
-                  zIndex: 0,
-                }}
-              >
-                Creator Splash
-              </span>
-              <span style={{ position: "relative", color: "white", zIndex: 1 }}>
-                Creator Splash
-              </span>
-            </h2>
+            <h1
+              className="text-8xl font-bold text-slate-900"
+              style={{ fontFamily: "Impact, sans-serif" }}
+            >
+              OUR
+            </h1>
 
             <h1
               className="text-9xl font-bold text-slate-900"
