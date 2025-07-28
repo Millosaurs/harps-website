@@ -66,85 +66,69 @@ export default function MCCWebsite() {
       image: "/merch.png",
     },
     {
+      title: "Season Opening",
+      description:
+        "Before each season starts, Creator Splash hosts a musical animation ceremony that brings together some of Minecraft’s best animators and singers/groups to perform live on stage.",
+      image: "/SH03.png",
+    },
+    {
       title: "Voting",
       description:
         "Voting is a key part of Creator Splash. Players vote for their favorite games, and the top nine games are selected for the event. This ensures that each event is unique and tailored to the players' preferences.",
       image: "/SH05.png",
     },
     {
-      title: "Super Soakers",
+      title: "The Games",
       description:
-        "Super Soakers is an action-packed, competitive shooter mixed with strategy and survival. Players gain coins upon shooting down floating balloons and killing opposing players using water pistols. Weapons switch every couple of minutes with different damages and ranges. As the match goes on, the border of the map gradually closes and respawn is disabled, putting pressure on the players to fight closer to each other and heightens tension. The teams need to switch between balloon popping and aggressive strategies and survival.",
-      image: "/gamelogos/Super_Soakers.png",
-    },
-    {
-      title: "Cloud Riders",
-      description:
-        "Teams spawn into the sky on floating clouds and fight to be the last team standing. Players collect gear from chests scattered across sky islands and eliminate enemy players in a fast-paced, one-life battle. Touching the ground removes your cloud until you're airborne again. The world border shrinks over time, forcing players into closer combat.",
-      image: "/gamelogos/Cloud_Riders.png",
-    },
-    {
-      title: "Flight School ",
-      description:
-        "Flight School is the classic Aerial Assault and Defense game. Teams of five split up with two players defending their team's balloon using cannons, while three take to the skies in planes to attack enemy balloons and shoot down rival pilots. Planes have unlimited respawns until their balloon is destroyed. Once the balloon is gone, remaining players are eliminated.",
-      image: "/gamelogos/Flight_School.png",
-    },
-    {
-      title: "Haunted Hull",
-      description:
-        "Teams board a haunted cruise ship under attack from ghostly Drowned Pirates and enemy cannon fire. To stay afloat, they must repair damage using parts from chests or by manually fixing broken areas. Attacks and random events grow more intense as the game progresses, increasing pressure on all teams. Players can revive teammates, but if the entire team is down or the ship hits 100% damage, they're eliminated. Survival demands teamwork, quick thinking, and nonstop repairs.",
-      image: "/gamelogos/Haunted_Hull.png",
-    },
-    {
-      title: "Nemesis Rising",
-      description:
-        "Nemesis Rising is the traditional Boss Battle game with a huge twist. Teams are assigned to different maps, with each of them having a customized mob boss. The more powerful a team's current standing, the more powerful the boss they have to fight. There are 3 lives for every player to defeat their respective boss. Less powerful bosses reward more coins, providing lower-scoring teams an opportunity to catch up. There are 45 different mob bosses players can face with a wide variety of attacks. ",
-      image: "/gamelogos/Nemesis_Rising.png",
-    },
-    {
-      title: "Sea Raceway",
-      description:
-        "Players race through underwater tracks on custom sea creatures, dodging various obstacles that change depending on the map. Speed is important, but going too fast for too long causes pressure to build in their diving mask, which can crack and break if not controlled. Stuck in first-person view and locked to their mount, racers must steer through sharp turns and dangerous obstacles while managing their speed. The goal is to finish as fast as possible without getting hit, slowed down, or knocked out by the environment.",
-      image: "/gamelogos/Sea_Raceway.png",
+        "Creator Splash brings together eight teams of five creators. Each event features a rotating line-up from thirteen original games, but only nine will be played. To keep things fresh, players participate in a randomized wheel spin to determine which games make it into the voting pool. The games range from aerial combat and underwater salvage to spooky betrayal and much more.",
+      image: "/SH05_1.png",
     },
   ];
 
   const gamesSlides = [
     {
       title: "Super Soakers",
-      description:
-        "Super Soakers is an action-packed, competitive shooter mixed with strategy and survival. Players gain coins upon shooting down floating balloons and killing opposing players using water pistols. Weapons switch every couple of minutes with different damages and ranges. As the match goes on, the border of the map gradually closes and respawn is disabled, putting pressure on the players to fight closer to each other and heightens tension. The teams need to switch between balloon popping and aggressive strategies and survival.",
-      image: "/gamelogos/Super_Soakers.png",
+      image: "/games/Super_Soakers.png",
     },
     {
       title: "Cloud Riders",
-      description:
-        "Teams spawn into the sky on floating clouds and fight to be the last team standing. Players collect gear from chests scattered across sky islands and eliminate enemy players in a fast-paced, one-life battle. Touching the ground removes your cloud until you're airborne again. The world border shrinks over time, forcing players into closer combat.",
-      image: "/gamelogos/Cloud_Riders.png",
+      image: "/games/Cloud_Riders.png",
     },
     {
       title: "Flight School",
-      description:
-        "Flight School is the classic Aerial Assault and Defense game. Teams of five split up with two players defending their team's balloon using cannons, while three take to the skies in planes to attack enemy balloons and shoot down rival pilots. Planes have unlimited respawns until their balloon is destroyed. Once the balloon is gone, remaining players are eliminated.",
-      image: "/gamelogos/Flight_School.png",
+      image: "/games/Flight_School.png",
     },
     {
       title: "Haunted Hull",
-      description:
-        "Teams board a haunted cruise ship under attack from ghostly Drowned Pirates and enemy cannon fire. To stay afloat, they must repair damage using parts from chests or by manually fixing broken areas. Attacks and random events grow more intense as the game progresses, increasing pressure on all teams. Players can revive teammates, but if the entire team is down or the ship hits 100% damage, they're eliminated. Survival demands teamwork, quick thinking, and nonstop repairs.",
-      image: "/gamelogos/Haunted_Hull.png",
+      image: "/games/Haunted_Hull.png",
     },
     {
       title: "Nemesis Rising",
-      description:
-        "Nemesis Rising is the traditional Boss Battle game with a huge twist. Teams are assigned to different maps, with each of them having a customized mob boss. The more powerful a team's current standing, the more powerful the boss they have to fight. There are 3 lives for every player to defeat their respective boss. Less powerful bosses reward more coins, providing lower-scoring teams an opportunity to catch up. There are 45 different mob bosses players can face with a wide variety of attacks.",
-      image: "/gamelogos/Nemesis_Rising.png",
+      image: "/games/Nemesis_Rising.png",
     },
     {
       title: "Sea Raceway",
-      description:
-        "Players race through underwater tracks on custom sea creatures, dodging various obstacles that change depending on the map. Speed is important, but going too fast for too long causes pressure to build in their diving mask, which can crack and break if not controlled. Stuck in first-person view and locked to their mount, racers must steer through sharp turns and dangerous obstacles while managing their speed. The goal is to finish as fast as possible without getting hit, slowed down, or knocked out by the environment.",
-      image: "/gamelogos/Sea_Raceway.png",
+      image: "/games/Sea_Raceway.png",
+    },
+    {
+      title: "Deep Divers",
+      image: "/games/Deep_Divers.png",
+    },
+    {
+      title: "Multiverse",
+      image: "/games/Multiverse.png",
+    },
+    {
+      title: "Hunted",
+      image: "/games/Hunted.png",
+    },
+    {
+      title: "Delivery Of Doom",
+      image: "/games/Delivery_Of_Doom.png",
+    },
+    {
+      title: " [REDACTED]",
+      image: "/games/REDACTED.png",
     },
   ];
 
@@ -164,7 +148,7 @@ export default function MCCWebsite() {
 
         {/* Centered Video Card Container */}
         <div className="relative z-30 container mx-auto px-4 h-full flex items-center justify-center">
-          <div className="relative max-w-4xl w-full">
+          <div className="relative max-w-9xl w-full">
             {/* Main Video Card */}
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <video
@@ -172,7 +156,7 @@ export default function MCCWebsite() {
                 muted
                 loop
                 playsInline
-                className="relative w-full h-120 sm:h-48 md:h-80 lg:h-120 object-cover"
+                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-120 object-cover"
               >
                 <source src="/intro.mp4" type="video/mp4" />
               </video>
@@ -289,71 +273,73 @@ export default function MCCWebsite() {
       </section>
 
       {/* Contest Section with Wavy Bottom */}
-      <section className="relative bg-yellow-400 py-12 sm:py-16 md:py-20">
+      <section className="relative bg-yellow-400 py-16">
         {/* Blocky Top Border */}
-        <div className="absolute top-0 left-0 w-full h-4 bg-[#1a202c]">
+        <div className="absolute top-0 left-0 w-full h-4 bg-yellow-400">
           <div className="flex h-full">
             {[
-              100, 50, 100, 50, 100, 50, 100, 50, 100, 50, 100, 50, 100, 50,
-              100, 50, 100, 50, 100, 50, 100, 50, 100, 50, 100, 50, 100, 50,
+              100, 75, 100, 50, 100, 75, 50, 100, 75, 100, 50, 75, 100, 50, 100,
+              75, 50, 100, 75, 100, 50, 100, 75, 50,
             ].map((height, i) => (
               <div
                 key={i}
-                className="flex-1 bg-yellow-400"
+                className="flex-1 bg-yellow-500"
                 style={{
                   height: `${height}%`,
-                  marginTop: `${100 - height}%`,
+                  alignSelf: "flex-end",
                 }}
               />
             ))}
           </div>
         </div>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-2">
-              MINECRAFT&rsquo;S BIGGEST
+        <div className="container mx-auto px-24 ">
+          <div className="text-left mb-12">
+            <h2 className="text-4xl font-bold text-blue-900 mb-2">
+              MINECRAFT'S BIGGEST
             </h2>
             <h1
-              className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-blue-900"
+              className="text-9xl font-bold text-blue-900"
               style={{ fontFamily: "Impact, sans-serif" }}
             >
               CONTEST
             </h1>
           </div>
 
-          <div className="relative max-w-6xl mx-auto h-auto md:h-[400px] pb-10">
-            <div className="relative h-full">
+          <div className="relative max-w-6xl mx-auto">
+            <div className="relative">
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute -left-4 sm:-left-8 md:-left-20 z-20 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-4 sm:p-6 md:p-8 rounded-full"
+                className="absolute -left-24 z-20 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-8 rounded-full"
                 onClick={() => setContestSlide(Math.max(0, contestSlide - 1))}
               >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                <ChevronLeft className="w-6 h-6" />
               </Button>
 
               {/* Main Image Container */}
-              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center h-full">
-                <div className="relative h-64 sm:h-80 md:h-full flex items-center order-2 md:order-1">
-                  <Image
-                    src={
-                      contestSlides[contestSlide].image || "/placeholder.svg"
-                    }
-                    alt={contestSlides[contestSlide].title}
-                    width={600}
-                    height={400}
-                    className="rounded-lg shadow-lg w-full aspect-video bg-white h-full object-cover"
-                  />
-                </div>
+              <div className="relative w-full">
+                <Image
+                  src={contestSlides[contestSlide].image || "/placeholder.svg"}
+                  alt={contestSlides[contestSlide].title}
+                  width={1000}
+                  height={563}
+                  className="rounded-lg shadow-lg w-full aspect-video object-cover"
+                />
 
-                <Card className="bg-white p-4 sm:p-6 md:p-8 shadow-lg relative h-auto md:h-full flex flex-col justify-center order-1 md:order-2">
-                  <div className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
-                    {contestSlide + 1}
+                {/* Overlapping Card */}
+                <Card
+                  className="absolute -right-46 top-3/4 bg-white p-8 shadow-xl max-w-sm z-10 flex flex-col"
+                  style={{ transformOrigin: "top center" }}
+                >
+                  <div className="absolute -top-6 right-40 bg-red-600 text-white rounded-md rotate-45 w-12 h-12 flex items-center justify-center font-bold text-lg text-center">
+                    <span className="-rotate-45 text-center">
+                      {contestSlide + 1}
+                    </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-blue-900">
+                  <h3 className="text-2xl font-bold mb-4 text-blue-900 text-center flex-shrink-0">
                     {contestSlides[contestSlide].title}
                   </h3>
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-sm text-center flex-grow">
                     {contestSlides[contestSlide].description}
                   </p>
                 </Card>
@@ -362,14 +348,14 @@ export default function MCCWebsite() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute -right-4 sm:-right-8 md:-right-20 z-20 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-4 sm:p-6 md:p-8 rounded-full"
+                className="absolute -right-24 z-20 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-8 rounded-full"
                 onClick={() =>
                   setContestSlide(
                     Math.min(contestSlides.length - 1, contestSlide + 1)
                   )
                 }
               >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                <ChevronRight className="w-6 h-6" />
               </Button>
             </div>
 
@@ -390,7 +376,7 @@ export default function MCCWebsite() {
         </div>
 
         {/* Wavy Bottom Border */}
-        <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
           <svg
             className="relative block w-full h-20"
             viewBox="0 0 1200 120"
@@ -406,13 +392,13 @@ export default function MCCWebsite() {
 
       {/* Games Section */}
       <section className="relative bg-[#3b82f6] py-12 sm:py-14 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
+        <div className="container mx-auto px-24">
+          <div className="text-left mb-8 sm:mb-10 md:mb-12">
+            <h2 className="text-xl sm:text-4xl font-bold text-white mb-2">
               OUR CHAOTIC
             </h2>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white"
+              className="text-4xl sm:text-xl md:text-9xl font-bold text-white"
               style={{ fontFamily: "Impact, sans-serif" }}
             >
               GAMES
@@ -425,34 +411,44 @@ export default function MCCWebsite() {
               variant="ghost"
               size="icon"
               className="absolute -left-4 sm:-left-8 md:-left-20 z-10 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-4 sm:p-6 md:p-8 rounded-full"
-              onClick={() => setGamesSlide(Math.max(0, gamesSlide - 1))}
+              onClick={() =>
+                setGamesSlide(Math.max(0, gamesSlide - slidesToShow))
+              }
               disabled={gamesSlide === 0}
             >
               <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </Button>
 
             {/* Carousel Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-2 md:gap-3">
               {gamesSlides
                 .slice(gamesSlide, gamesSlide + slidesToShow)
                 .map((game, index) => (
-                  <Card
-                    key={index}
-                    className="bg-white overflow-hidden flex flex-col"
-                  >
-                    <Image
-                      src={game.image || "/placeholder.svg"}
-                      alt={game.title}
-                      width={300}
-                      height={200}
-                      className="w-full h-24 sm:h-28 md:h-32 object-cover"
-                    />
-                    <div className="px-2 sm:px-3 md:px-4 py-2 text-center flex-1 flex flex-col">
-                      <h2 className="font-bold text-sm sm:text-base md:text-lg mb-2">
-                        {game.title}
-                      </h2>
-                    </div>
-                  </Card>
+                  <div key={index} className="flex flex-col items-center">
+                    <Card
+                      className={`bg-blue overflow-hidden relative aspect-[9/16] rounded-xl w-full ${
+                        index % 2 === 1 ? "mt-4" : ""
+                      }`}
+                    >
+                      {/* Background Image using Next.js Image */}
+                      <Image
+                        src={game.image || "/placeholder.svg"}
+                        alt=""
+                        fill
+                        className="object-cover rounded-xl"
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                        unoptimized={true} 
+                      />
+
+                      {/* Dark overlay for better text readability */}
+                      <div className="absolute inset-0 bg-black/20 z-10 rounded-xl"></div>
+                    </Card>
+
+                    {/* Game title outside the card */}
+                    <h2 className="font-bold text-sm sm:text-base md:text-lg text-white mt-3 text-center">
+                      {game.title}
+                    </h2>
+                  </div>
                 ))}
             </div>
 
@@ -463,7 +459,10 @@ export default function MCCWebsite() {
               className="absolute -right-4 sm:-right-8 md:-right-20 z-10 bg-white/80 hover:bg-white top-1/2 -translate-y-1/2 p-4 sm:p-6 md:p-8 rounded-full"
               onClick={() =>
                 setGamesSlide(
-                  Math.min(gamesSlides.length - slidesToShow, gamesSlide + 1)
+                  Math.min(
+                    gamesSlides.length - slidesToShow,
+                    gamesSlide + slidesToShow
+                  )
                 )
               }
               disabled={gamesSlide >= gamesSlides.length - slidesToShow}
@@ -474,16 +473,16 @@ export default function MCCWebsite() {
             {/* Dots */}
             <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
               {Array.from({
-                length: Math.max(1, gamesSlides.length - slidesToShow + 1),
+                length: Math.ceil(gamesSlides.length / slidesToShow),
               }).map((_, idx) => (
                 <button
                   key={idx}
                   className={`w-3 h-3 ${
-                    idx === gamesSlide
+                    Math.floor(gamesSlide / slidesToShow) === idx
                       ? "bg-blue-600 rotate-45"
                       : "bg-white/30 rounded-full"
                   }`}
-                  onClick={() => setGamesSlide(idx)}
+                  onClick={() => setGamesSlide(idx * slidesToShow)}
                 />
               ))}
             </div>
