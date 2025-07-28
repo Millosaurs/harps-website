@@ -1,7 +1,6 @@
 // app/games/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Labrada } from "next/font/google";
 
 const games = [
   {
@@ -37,7 +36,7 @@ const games = [
     slug: "oxygen-heist",
     title: "Oxygen Heist",
     description:
-      "Teams dive into a deep-sea trench to collect artifacts and fight over limited oxygen tanks scattered around the map. Artifacts can be cashed in at team-controlled zones for points, while holding a zone also awards passive points over time and unlimited oxygen whilst in a team controlled zone. Players only have one life, and if a team runs out of oxygen, they’re eliminated. As the match goes on, the border of the map gradually closes.",
+      "Teams dive into a deep-sea trench to collect artifacts and fight over limited oxygen tanks scattered around the map. Artifacts can be cashed in at team-controlled zones for points, while holding a zone also awards passive points over time and unlimited oxygen whilst in a team controlled zone. Players only have one life, and if a team runs out of oxygen, they're eliminated. As the match goes on, the border of the map gradually closes.",
     image: "/landscape/4.svg",
     scoring: [
       {
@@ -50,7 +49,7 @@ const games = [
     slug: "haunted-hull",
     title: "Haunted Hull",
     description:
-      "Teams board a haunted cruise ship under attack, racing to keep it afloat as ghostly Drowned Pirates haunt the corridors and distant pirate ships bombard them with cannon fire. To prevent the ship from sinking, players must repair damaged parts scattered throughout the vessel. These repairs can be completed either by collecting parts from chests or by standing near broken sections to fix them. As the game progresses, random events and enemy attacks become more frequent, increasing the pressure on all teams. If a ship takes 100% damage, that team is eliminated. Players can revive fallen teammates, but if the entire team is down at once it’s over.",
+      "Teams board a haunted cruise ship under attack, racing to keep it afloat as ghostly Drowned Pirates haunt the corridors and distant pirate ships bombard them with cannon fire. To prevent the ship from sinking, players must repair damaged parts scattered throughout the vessel. These repairs can be completed either by collecting parts from chests or by standing near broken sections to fix them. As the game progresses, random events and enemy attacks become more frequent, increasing the pressure on all teams. If a ship takes 100% damage, that team is eliminated. Players can revive fallen teammates, but if the entire team is down at once it's over.",
     image: "/landscape/7.svg",
     scoring: [
       {
@@ -154,8 +153,13 @@ export async function generateStaticParams() {
   return games.map((game) => ({ slug: game.slug }));
 }
 
-export default function GamePage({ params }: { params: { slug: string } }) {
-  const game = games.find((g) => g.slug === params.slug);
+export default async function GamePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const game = games.find((g) => g.slug === slug);
 
   if (!game) return notFound();
 
