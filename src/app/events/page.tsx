@@ -157,7 +157,7 @@ export default function MCCWebsite() {
                 muted
                 loop
                 playsInline
-                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-130 object-cover rounded-lg"
+                className="relative w-full h-180 sm:h-48 md:h-80 lg:h-130 object-cover rounded-lg mb-12"
               >
                 <source src="/intro.mp4" type="video/mp4" />
               </video>
