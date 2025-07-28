@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Twitter, Users, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 export default function MCCWebsite() {
   const [contestSlide, setContestSlide] = useState(0);
@@ -87,48 +88,64 @@ export default function MCCWebsite() {
 
   const gamesSlides = [
     {
+      slug: "super-soakers",
       title: "Super Soakers",
-      image: "/games/Super_Soakers.png",
+      image: "/games/Super_Soakers.svg",
     },
     {
+      slug: "cloud-riders",
       title: "Cloud Riders",
-      image: "/games/Cloud_Riders.png",
+      image: "/games/Cloud_Riders.svg",
     },
     {
+      slug: "flight-school",
       title: "Flight School",
-      image: "/games/Flight_School.png",
+      image: "/games/Flight_School.svg",
     },
     {
+      slug: "haunted-hull",
       title: "Haunted Hull",
-      image: "/games/Haunted_Hull.png",
+      image: "/games/Haunted_Hull.svg",
     },
     {
+      slug: "oxygen_heist",
+      title: "Oxygen Heist",
+      image: "/games/Oxygen_Heist.svg",
+    },
+    {
+      slug: "nemesis-rising",
       title: "Nemesis Rising",
-      image: "/games/Nemesis_Rising.png",
+      image: "/games/Nemesis_Rising.svg",
     },
     {
+      slug: "sea-raceway",
       title: "Sea Raceway",
-      image: "/games/Sea_Raceway.png",
+      image: "/games/Sea_Raceway.svg",
     },
     {
+      slug: "deep-divers",
       title: "Deep Divers",
-      image: "/games/Deep_Divers.png",
+      image: "/games/Deep_Divers.svg",
     },
     {
+      slug: "multiverse",
       title: "Multiverse",
-      image: "/games/Multiverse.png",
+      image: "/games/Multiverse.svg",
     },
     {
+      slug: "hunted",
       title: "Hunted",
-      image: "/games/Hunted.png",
+      image: "",
     },
     {
+      slug: "delivery-of-doom",
       title: "Delivery Of Doom",
-      image: "/games/Delivery_Of_Doom.png",
+      image: "",
     },
     {
+      slug: "redacted",
       title: " [REDACTED]",
-      image: "/games/REDACTED.png",
+      image: "",
     },
   ];
 
@@ -454,30 +471,34 @@ export default function MCCWebsite() {
               {gamesSlides
                 .slice(gamesSlide, gamesSlide + slidesToShow)
                 .map((game, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <Card
-                      className={`bg-blue overflow-hidden relative aspect-[9/16] rounded-xl w-full ${
-                        index % 2 === 1 ? "mt-4" : ""
-                      }`}
-                    >
-                      {/* Background Image using Next.js Image */}
-                      <Image
-                        src={game.image || "/placeholder.svg"}
-                        alt=""
-                        fill
-                        className="object-cover rounded-xl"
-                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                        unoptimized={true}
-                      />
+                  <Link
+                    key={game.slug}
+                    href={`/games/${game.slug}`}
+                    className="block group"
+                  >
+                    <div key={index} className="flex flex-col items-center">
+                      <Card
+                        className={`bg-blue overflow-hidden relative aspect-[9/16] rounded-xl w-full ${
+                          index % 2 === 1 ? "mt-4" : ""
+                        }`}
+                      >
+                        {/* Background Image using Next.js Image */}
+                        <Image
+                          src={game.image || "/iamge.svg"}
+                          alt=""
+                          fill
+                          className="object-cover rounded-xl"
+                          sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                          unoptimized={true}
+                        />
+                      </Card>
 
-                      {/* Dark overlay for better text readability */}
-                    </Card>
-
-                    {/* Game title outside the card */}
-                    <h2 className="font-bold text-sm sm:text-base md:text-lg text-white mt-3 text-center">
-                      {game.title}
-                    </h2>
-                  </div>
+                      {/* Game title outside the card */}
+                      <h2 className="font-bold text-sm sm:text-base md:text-lg text-white mt-3 text-center">
+                        {game.title}
+                      </h2>
+                    </div>
+                  </Link>
                 ))}
             </div>
 
