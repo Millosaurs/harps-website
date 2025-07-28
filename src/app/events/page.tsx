@@ -108,7 +108,7 @@ export default function MCCWebsite() {
       image: "/games/Haunted_Hull.svg",
     },
     {
-      slug: "oxygen_heist",
+      slug: "oxygen-heist",
       title: "Oxygen Heist",
       image: "/games/Oxygen_Heist.svg",
     },
