@@ -296,7 +296,7 @@ export default function MCCWebsite() {
         <div className="container mx-auto px-24 ">
           <div className="text-left mb-12">
             <h2 className="text-4xl font-bold text-blue-900 mb-2">
-              MINECRAFT'S BIGGEST
+              MINECRAFT&lsquo;S BIGGEST
             </h2>
             <h1
               className="text-9xl font-bold text-blue-900"
@@ -471,21 +471,34 @@ export default function MCCWebsite() {
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </Button>
 
-            {/* Dots */}
             <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
-              {Array.from({
-                length: Math.ceil(gamesSlides.length / slidesToShow),
-              }).map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`w-3 h-3 ${
-                    Math.floor(gamesSlide / slidesToShow) === idx
-                      ? "bg-blue-600 rotate-45"
-                      : "bg-white/30 rounded-full"
-                  }`}
-                  onClick={() => setGamesSlide(idx * slidesToShow)}
-                />
-              ))}
+              {(() => {
+                const totalDots = Math.ceil(gamesSlides.length / slidesToShow);
+
+                return Array.from({ length: totalDots }).map((_, idx) => {
+                  const targetSlide = idx * slidesToShow;
+                  const maxSlide = Math.max(
+                    0,
+                    gamesSlides.length - slidesToShow
+                  );
+                  const actualTargetSlide = Math.min(targetSlide, maxSlide);
+
+                  // Fix: Check if current slide matches this dot's target
+                  const isActive = gamesSlide === actualTargetSlide;
+
+                  return (
+                    <button
+                      key={idx}
+                      className={`w-3 h-3 ${
+                        isActive
+                          ? "bg-blue-600 rotate-45"
+                          : "bg-white/30 rounded-full"
+                      }`}
+                      onClick={() => setGamesSlide(actualTargetSlide)}
+                    />
+                  );
+                });
+              })()}
             </div>
           </div>
         </div>
