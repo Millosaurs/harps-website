@@ -316,11 +316,9 @@ export default function MCCWebsite() {
         </div> */}
         <div className="container mx-auto px-24 ">
           <div className="text-left mb-12">
-            <h2 className="text-4xl font-bold text-blue-900 mb-2">
-              Creator Splash
-            </h2>
+            <Image src="/test5.png" alt="" width={300} height={300} />
             <h1
-              className="text-9xl font-bold text-blue-900"
+              className="text-9xl font-bold text-slate-900"
               style={{ fontFamily: "Impact, sans-serif" }}
             >
               EVENTS
@@ -423,7 +421,7 @@ export default function MCCWebsite() {
               className="text-4xl sm:text-xl md:text-9xl font-bold text-[#feb2da]"
               style={{
                 fontFamily: "Impact, sans-serif",
-                WebkitTextStroke: "4px black",
+                WebkitTextStroke: "1px black",
                 color: "#feb2da",
               }}
             >
