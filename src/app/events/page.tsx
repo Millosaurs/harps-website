@@ -174,7 +174,16 @@ export default function MCCWebsite() {
                     }}
                   >
                     <br />
-                    Creator Splash
+                    <div className="flex items-center justify-center">
+                      {" "}
+                      <Image
+                        width={500}
+                        height={500}
+                        src="/logo.png"
+                        alt=""
+                        className=""
+                      />
+                    </div>
                   </h1>
                   <p className="text-sm sm:text-base md:text-lg mb-6 max-w-2xl mx-auto drop-shadow-md font-medium">
                     Creator Splash is a Minecraft event bringing 40 creators
@@ -442,7 +451,6 @@ export default function MCCWebsite() {
                       />
 
                       {/* Dark overlay for better text readability */}
-                      <div className="absolute inset-0 bg-black/20 z-10 rounded-xl"></div>
                     </Card>
 
                     {/* Game title outside the card */}
