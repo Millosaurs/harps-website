@@ -226,7 +226,7 @@ export default function MCCWebsite() {
         }}
       >
         <div className="container mx-auto px-0 pt-30 sm:pt-20 md:pt-25 lg:pt-30 max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
             <Card className="bg-blue-500 text-white p-6 hover:bg-blue-600 transition-colors cursor-pointer">
               <a
                 href="https://x.com/CreatorSplash"
@@ -280,12 +280,24 @@ export default function MCCWebsite() {
             </Card>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg
+            className="relative block w-full h-20"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,60 C300,20 600,100 900,60 C1050,30 1150,80 1200,60 L1200,120 L0,120 Z"
+              fill="#fdc700"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* Contest Section with Wavy Bottom */}
-      <section className="relative bg-yellow-400 py-16">
+      <section className="relative bg-[#fdc700] py-16">
         {/* Blocky Top Border */}
-        <div className="absolute top-0 left-0 w-full h-4 bg-[#1a202c]">
+        {/* <div className="absolute top-0 left-0 w-full h-4 bg-[#1a202c]">
           <div className="flex h-full">
             {[
               100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 20,
@@ -301,17 +313,17 @@ export default function MCCWebsite() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
         <div className="container mx-auto px-24 ">
           <div className="text-left mb-12">
             <h2 className="text-4xl font-bold text-blue-900 mb-2">
-              MINECRAFT&lsquo;S BIGGEST
+              Creator Splash
             </h2>
             <h1
               className="text-9xl font-bold text-blue-900"
               style={{ fontFamily: "Impact, sans-serif" }}
             >
-              CONTEST
+              EVENTS
             </h1>
           </div>
 
@@ -386,7 +398,7 @@ export default function MCCWebsite() {
         </div>
 
         {/* Wavy Bottom Border */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+        <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
           <svg
             className="relative block w-full h-20"
             viewBox="0 0 1200 120"
@@ -405,13 +417,17 @@ export default function MCCWebsite() {
         <div className="container mx-auto px-24">
           <div className="text-left mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-xl sm:text-4xl font-bold text-white mb-2">
-              OUR CHAOTIC
+              OUR GAME
             </h2>
             <h1
-              className="text-4xl sm:text-xl md:text-9xl font-bold text-white"
-              style={{ fontFamily: "Impact, sans-serif" }}
+              className="text-4xl sm:text-xl md:text-9xl font-bold text-[#feb2da]"
+              style={{
+                fontFamily: "Impact, sans-serif",
+                WebkitTextStroke: "4px black",
+                color: "#feb2da",
+              }}
             >
-              GAMES
+              ROSTER
             </h1>
           </div>
 
