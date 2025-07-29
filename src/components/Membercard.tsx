@@ -1,6 +1,7 @@
 // components/MemberCard.tsx
 import React from "react";
 import Image from "next/image";
+import Flag from "react-flagkit";
 
 export interface MemberCardProps {
   avatar?: string;
@@ -37,11 +38,11 @@ export default function MemberCard({
         </div>
       )}
       <h3 className="text-xl font-bold mb-1 text-center">{name}</h3>
-      <div className="text-sm text-gray-300 mb-2 text-center">
+      <div className="flex flex-row text-sm text-gray-300 mb-2 text-center ">
         {role}
         {countryFlag && (
-          <span className="ml-2" title={country}>
-            {countryFlag}
+          <span className="ml-2 not-emoji-font" title={country}>
+            <Flag country={countryFlag} />
           </span>
         )}
       </div>

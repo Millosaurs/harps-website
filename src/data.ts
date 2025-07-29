@@ -5,7 +5,7 @@ export const teamMembers = [
     avatar: "Axolotl_1.png",
     role: "Owner",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: [
       "Owner of Creator Splash",
       "Game Concept Designer",
@@ -17,7 +17,7 @@ export const teamMembers = [
     avatar: "Axolotl_2.png",
     role: "Discord Admin",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Discord Server Admin", "Discord Bot Administrator"],
   },
   {
@@ -25,7 +25,7 @@ export const teamMembers = [
     avatar: "Axolotl_3.png",
     role: "Discord Staff",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Discord Moderator", "Backup Event Moderator"],
   },
   {
@@ -33,7 +33,7 @@ export const teamMembers = [
     avatar: "Axolotl_4.png",
     role: "Discord Staff",
     country: "Australia",
-    countryFlag: "🇦🇺",
+    countryFlag: "AU",
     responsibilities: ["Discord Moderator", "Backup Event Moderator"],
   },
   {
@@ -49,7 +49,7 @@ export const teamMembers = [
     avatar: "Axolotl_6.png",
     role: "Head Dev",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Main Developer for Creator Splash", "UI/UX Specialist"],
   },
   {
@@ -57,7 +57,7 @@ export const teamMembers = [
     avatar: "Axolotl_7.png",
     role: "Weapons Dev",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Creates Kits we used for Multiverse"],
   },
   {
@@ -65,7 +65,7 @@ export const teamMembers = [
     avatar: "Axolotl_8.png",
     role: "Texture Pack Artist",
     country: "France",
-    countryFlag: "🇫🇷",
+    countryFlag: "FR",
     responsibilities: ["Creator of Creator Splash Texture Pack"],
   },
   {
@@ -73,7 +73,7 @@ export const teamMembers = [
     avatar: "Axolotl_9.png",
     role: "Community Manager",
     country: "Syria",
-    countryFlag: "🇸🇾",
+    countryFlag: "SY",
     responsibilities: [
       "Head of Community Relations",
       "Head of Sponsorships",
@@ -86,7 +86,7 @@ export const teamMembers = [
     avatar: "Axolotl_10.png",
     role: "Roster Manager",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: [
       "Team Management",
       "Roster Management",
@@ -99,7 +99,7 @@ export const teamMembers = [
     avatar: "Axolotl_11.png",
     role: "Event Staff",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -107,7 +107,7 @@ export const teamMembers = [
     avatar: "Axolotl_12.png",
     role: "Event Staff",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Event Moderator", "Team Logo Designer", "Event Artist"],
   },
   {
@@ -115,7 +115,7 @@ export const teamMembers = [
     avatar: "Axolotl_13.png",
     role: "Event Staff",
     country: "Sweden",
-    countryFlag: "🇸🇪",
+    countryFlag: "SE",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -123,7 +123,7 @@ export const teamMembers = [
     avatar: "Axolotl_14.png",
     role: "Event Staff",
     country: "Slovakia",
-    countryFlag: "🇸🇰",
+    countryFlag: "SK",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -131,7 +131,7 @@ export const teamMembers = [
     avatar: "Axolotl_15.png",
     role: "Event Staff",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -139,7 +139,7 @@ export const teamMembers = [
     avatar: "Axolotl_16.png",
     role: "Event Staff",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -147,7 +147,7 @@ export const teamMembers = [
     avatar: "Axolotl_17.png",
     role: "Event Staff",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Event Moderator"],
   },
   {
@@ -155,7 +155,7 @@ export const teamMembers = [
     avatar: "Axolotl_18.png",
     role: "Event Staff",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Event Moderator"],
   },
   // Audio Dept
@@ -164,7 +164,7 @@ export const teamMembers = [
     avatar: "Axolotl_19.png",
     role: "Music Producer",
     country: "Indonesia",
-    countryFlag: "🇮🇩",
+    countryFlag: "ID",
     responsibilities: ["Event Music Production"],
   },
   {
@@ -172,7 +172,7 @@ export const teamMembers = [
     avatar: "Axolotl_20.png",
     role: "Audio Engineer",
     country: "Greece",
-    countryFlag: "🇬🇷",
+    countryFlag: "GR",
     responsibilities: ["Mixxing and Mastering Vocals"],
   },
   {
@@ -180,7 +180,7 @@ export const teamMembers = [
     avatar: "Axolotl_21.png",
     role: "Voice Actor",
     country: "United Kingdom",
-    countryFlag: "🇬🇧",
+    countryFlag: "GB",
     responsibilities: ["Voice of Necromancer", "Voice of Monk"],
   },
   {
@@ -188,7 +188,7 @@ export const teamMembers = [
     avatar: "Axolotl_22.png",
     role: "Voice Actor",
     country: "America",
-    countryFlag: "🇺🇸",
+    countryFlag: "US",
     responsibilities: ["Voice of Null"],
   },
 ];
