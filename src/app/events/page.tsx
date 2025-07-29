@@ -41,21 +41,7 @@ export default function MCCWebsite() {
       description:
         "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
       image: "/heads/Axolotl_1.png",
-      logoimage: "/logo.png",
-    },
-    {
-      title: "Season 1 Merch",
-      description:
-        "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
-      image: "/heads/Axolotl_2.png",
-      logoimage: "/logo.png",
-    },
-    {
-      title: "Season 1 Merch",
-      description:
-        "Creator Splash season 1 Merch is here! Want your own axolotl/sea themed merch? Press the button below to check it out!",
-      image: "/heads/Axolotl_3.png",
-      logoimage: "/logo.png",
+      logoimage: "/logo.svg",
     },
   ];
 
@@ -579,13 +565,13 @@ export default function MCCWebsite() {
           <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center">
             {/* Left Side - Large Circular Image */}
             <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-purple-600 to-blue-800 p-3 sm:p-4 shadow-2xl md:z-11 md:mr-4">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-3 sm:p-4  md:z-11 md:mr-4">
                 <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center relative">
                   <Image
                     src={merchSlides[merchSlide].logoimage}
                     alt={merchSlides[merchSlide].title}
-                    width={320}
-                    height={320}
+                    width={380}
+                    height={380}
                     className="object-contain"
                     priority
                   />
@@ -594,7 +580,7 @@ export default function MCCWebsite() {
             </div>
 
             {/* Center Content */}
-            <div className="flex-1 bg-white rounded-xl shadow-xl p-6 sm:p-8 md:px-16 md:mr-6 md:-ml-24 md:z-10 md:h-64">
+            <div className="flex-1 bg-white rounded-xl shadow-xl p-6 sm:p-8 md:px-16 md:mr-6 md:-ml-32 md:z-10 md:h-64">
               <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#1e293b]">
                 {merchSlides[merchSlide].title}
               </h3>
@@ -609,7 +595,7 @@ export default function MCCWebsite() {
             </div>
 
             {/* Right Side - Navigation Dots */}
-            <div className="flex flex-row md:flex-col space-x-4 md:space-x-0 md:space-y-4 mt-6 md:mt-0">
+            {/* <div className="flex flex-row md:flex-col space-x-4 md:space-x-0 md:space-y-4 mt-6 md:mt-0">
               {merchSlides.map((slide, idx) => (
                 <button
                   key={idx}
@@ -631,7 +617,7 @@ export default function MCCWebsite() {
                   </div>
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 

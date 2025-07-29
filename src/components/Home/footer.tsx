@@ -1,4 +1,13 @@
 import Image from "next/image";
+import {
+  FaDiscord,
+  FaInstagram,
+  FaTicket,
+  FaTiktok,
+  FaTwitch,
+  FaX,
+  FaYoutube,
+} from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -55,14 +64,14 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row justify-between items-start w-full mb-8 gap-8 mt-8">
-          <div className="flex flex-col md:flex-row gap-6 items-center md:items-start flex-1 max-w-[600px]">
+          <div className="flex flex-col md:flex-row gap-6 items-center md:items-start flex-1 max-w-[800px]">
             <div className=" flex items-center justify-center flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Creator Splash"
                 className="object-cover"
-                width={200}
-                height={200}
+                width={300}
+                height={300}
               />
             </div>
             <div className="flex-1">
@@ -78,13 +87,43 @@ const Footer = () => {
           </div>
           <div className="flex flex-col items-end md:items-end text-right">
             <h3 className="mb-2 text-base font-bold">Looking for more?</h3>
-            <div className="flex flex-col items-end gap-1">
-              <div>
+            <div>
+              <div className="flex flex-row gap-2">
                 <a
-                  href="https://discord.com/invite/Fpa9Ps8NdR"
+                  href="https://discord.gg/Fpa9Ps8NdR"
                   className="hover:underline"
                 >
-                  Discord
+                  <FaDiscord />
+                </a>
+                <a
+                  href="https://www.twitch.tv/harp6288"
+                  className="hover:underline"
+                >
+                  <FaTwitch />
+                </a>
+                <a
+                  href="https://x.com/CreatorSplash"
+                  className="hover:underline"
+                >
+                  <FaX />
+                </a>
+                <a
+                  href="https://www.instagram.com/harp_6288/"
+                  className="hover:underline"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@creator.splash"
+                  className="hover:underline"
+                >
+                  <FaTiktok />
+                </a>
+                <a
+                  href="https://www.youtube.com/@CreatorSplash"
+                  className="hover:underline"
+                >
+                  <FaYoutube />
                 </a>
               </div>
             </div>
