@@ -50,7 +50,7 @@ export const teamMembers = [
     role: "Head Dev",
     country: "America",
     countryFlag: "US",
-    responsibilities: ["Main Developer for Creator Splash", "UI/UX Specialist"],
+    responsibilities: ["Head Developer", "UI/UX Specialist"],
   },
   {
     name: "Samus",
@@ -58,7 +58,7 @@ export const teamMembers = [
     role: "Weapons Dev",
     country: "America",
     countryFlag: "US",
-    responsibilities: ["Creates Kits we used for Multiverse"],
+    responsibilities: ["Created Kits we used"],
   },
   {
     name: "Boss Isaz",
@@ -66,7 +66,7 @@ export const teamMembers = [
     role: "Texture Pack Artist",
     country: "France",
     countryFlag: "FR",
-    responsibilities: ["Creator of Creator Splash Texture Pack"],
+    responsibilities: ["Creator Splash Texture Artist"],
   },
   {
     name: "J48",
