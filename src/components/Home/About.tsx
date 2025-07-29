@@ -29,14 +29,14 @@ export default function About() {
           <h1
             className="
               text-5xl font-black uppercase relative
-              xl:text-3xl
+              xl:text-5xl
               after:content-[''] after:absolute after:-bottom-2.5 after:left-0 after:w-20 after:h-1 after:bg-white
               xl:after:left-1/2 xl:after:-translate-x-1/2
             "
           >
             About
           </h1>
-          <p className="text-lg leading-relaxed mt-5 xl:text-base">
+          <p className="text-lg md:text-xl xl:text-xl leading-relaxed mt-5">
             Harp is a YouTuber, Twitch streamer, and event host from South
             Wales, best known for his high-energy, chaotic, and hilarious
             Minecraft events. As a Twitch Affiliate and the driving force behind
@@ -44,7 +44,7 @@ export default function About() {
             unforgettable experiences complete with event lore that keeps
             audiences hooked.
           </p>
-          <p className="text-lg leading-relaxed mt-5 xl:text-base">
+          <p className="text-lg md:text-xl xl:text-xl leading-relaxed mt-5">
             Beyond content creation, Harp is a highly trained swimmer and
             Songwriter and made it to the UK Finals. Harp has collaborated with
             some of the biggest names in the YouTube and Twitch space. His
@@ -52,7 +52,7 @@ export default function About() {
             has earned him a loyal community that thrives on their signature
             brand of comedy and chaos.
           </p>
-          <p className="text-lg leading-relaxed mt-5 xl:text-base">
+          <p className="text-lg md:text-xl xl:text-xl leading-relaxed mt-5">
             Whether he’s streaming, hosting, or making waves (literally and
             figuratively), Harp is all about bringing people together for fun,
             excitement, and the unexpected.
@@ -63,11 +63,11 @@ export default function About() {
             <Image
               src="/harp_abt.png"
               alt="About Harp"
-              width={400}
-              height={400}
+              width={500}
+              height={500}
               className="
-                w-full max-w-[400px] rounded-lg shadow-[5px_5px_0px_white] -rotate-3
-                xl:max-w-[300px] xl:rotate-0
+                w-full max-w-[500px] rounded-lg shadow-[5px_5px_0px_white] -rotate-3
+                xl:max-w-[400px] xl:rotate-0
               "
               priority
             />
