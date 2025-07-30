@@ -33,7 +33,8 @@ const faqData = [
   },
   {
     question: "Can I ask Harp to be in my video?",
-    answer: "Harp's schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we're afraid the odds of him joining isn't the greatest.",
+    answer:
+      "Harp's schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we're afraid the odds of him joining isn't the greatest.",
   },
   {
     question: "Where can I watch Creator Splash content?",
