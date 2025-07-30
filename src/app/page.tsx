@@ -14,7 +14,7 @@ const faqData = [
   {
     question: "What is Creator Splash?",
     answer:
-      "We are a dynamic Minecraft Event in the Gaming industry designed to bring content creators together through fun, engaging, and light hearted gameplay experiences. At Creator Splash, we create unique, high-energy events that encourage collaboration, creativity, and entertainment to viewers.",
+      "Creator Splash brings together eight teams of five creators. Each event features a rotating line-up from thirteen original games, but only nine will be played. To keep things fresh, players participate in a randomized wheel spin to determine which games make it into the voting pool. The games range from aerial combat and underwater salvage to spooky betrayal and much more. Unlike other events, there is no final game that must be played, and during the final three games, team points are hidden until the end.",
   },
   {
     question: "Our Mission",
@@ -24,7 +24,7 @@ const faqData = [
   {
     question: "How can I join?",
     answer:
-      "Every month we host a fun new event in the community. To get involved make sure you follow us on Twitter and join the discord server!",
+      "Unfortunately, Creator Splash is currently an invite-only event. This may change in the future, but in the meantime, feel free to show support for the event by joining the Discord!",
   },
   {
     question: "Can I stream or record the event for my own content?",
