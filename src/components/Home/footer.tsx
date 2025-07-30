@@ -2,7 +2,6 @@ import Image from "next/image";
 import {
   FaDiscord,
   FaInstagram,
-  FaTicket,
   FaTiktok,
   FaTwitch,
   FaX,

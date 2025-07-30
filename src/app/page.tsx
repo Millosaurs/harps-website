@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"; 
+} from "@/components/ui/accordion";
 import Home from "@/components/Home/Home";
 import About from "@/components/Home/About";
 import Informations from "@/components/Home/Info";
@@ -33,7 +33,7 @@ const faqData = [
   },
   {
     question: "Can I ask Harp to be in my video?",
-    answer: `Harp&apos;s schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we&apos;re afraid the odds of him joining isn&apos;t the greatest.`,
+    answer: "Harp's schedule varies depending on the day so it just depends on when you catch him. Please keep in mind Harp usually has a pretty tight schedule so we're afraid the odds of him joining isn't the greatest.",
   },
   {
     question: "Where can I watch Creator Splash content?",
