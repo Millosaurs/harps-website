@@ -69,8 +69,8 @@ export const teamMembers = [
     responsibilities: ["Creator Splash Texture Artist"],
   },
   {
-    name: "J48",
-    avatar: "Axolotl_9.png",
+    name: "J48_",
+    avatar: "Axolotl_14.png",
     role: "Community Manager",
     country: "Syria",
     countryFlag: "SY",
@@ -120,7 +120,7 @@ export const teamMembers = [
   },
   {
     name: "Onyx",
-    avatar: "Axolotl_14.png",
+    avatar: "Axolotl_9.png",
     role: "Event Staff",
     country: "Slovakia",
     countryFlag: "SK",
