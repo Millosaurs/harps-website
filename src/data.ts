@@ -69,7 +69,7 @@ export const teamMembers = [
     responsibilities: ["Creator Splash Texture Artist"],
   },
   {
-    name: "J48_",
+    name: "J48",
     avatar: "Axolotl_14.png",
     role: "Community Manager",
     country: "Syria",
