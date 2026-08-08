@@ -51,7 +51,7 @@ export const teamMembers: TeamMember[] = [
   { name: 'Logic', skinFile: 'logic.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
   { name: 'Cammy', skinFile: 'cammy.png', role: 'Developer', country: 'Australia', countryFlag: 'AU', department: 'developers' },
   { name: 'King', skinFile: 'king.png', role: 'Developer', country: 'Canada', countryFlag: 'CA', department: 'developers' },
-  { name: 'BumpyJake', skinFile: 'bumpyjake.png', role: 'Developer', country: 'United Kingdom', countryFlag: 'GB', department: 'developers' },
+  { name: 'bumpyJake', skinFile: 'bumpyjake.png', role: 'Developer', country: 'United Kingdom', countryFlag: 'GB', department: 'developers' },
   { name: 'Kovah', skinFile: 'kovah.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
   { name: 'Yeet', skinFile: 'yeet.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
   { name: 'Apoco', skinFile: 'apoco.png', role: 'Developer', country: 'Spain', countryFlag: 'ES', department: 'developers' },
