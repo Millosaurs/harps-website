@@ -1,437 +1,138 @@
-// data/team.ts
+export interface Department {
+  id: string;
+  label: string;
+  isPrivate?: boolean;
+  privateMessage?: string;
+}
 
-export const teamMembers = [
-  // Owner
-  {
-    name: "Harp",
-    avatar: "Axolotl_1.png",
-    role: "Owner",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: [
-      "Owner of Creator Splash",
-      "Game Concept Designer",
-      "Project Manager",
-      "Songwriter",
-      "Choreographer",
-    ],
-  },
-
-  // Managers
-  {
-    name: "Benji",
-    avatar: "Axolotl_2.png",
-    role: "Discord Manager",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Discord Server Admin", "Discord Bot Administrator"],
-  },
-  {
-    name: "AJX",
-    avatar: "Axolotl_3.png",
-    role: "Roster Manager",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: [
-      "Team Management",
-      "Roster Management",
-      "Tester Recruitment",
-      "Player Balancing",
-    ],
-  },
-  {
-    name: "Seapeekay",
-    avatar: "Axolotl_4.png",
-    role: "Roster Manager+",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Roster Support", "Voice Acting", "Modeling"],
-  },
-  {
-    name: "Emily",
-    avatar: "Axolotl_5.png",
-    role: "Tester Manager",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Tester Management"],
-  },
-
-  // Discord Staff Team
-  {
-    name: "Fridge",
-    avatar: "Axolotl_6.png",
-    role: "Discord Staff",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Discord Moderator", "Backup Event Moderator"],
-  },
-  {
-    name: "AgentOfLore",
-    avatar: "Axolotl_7.png",
-    role: "Discord Staff",
-    country: "Australia",
-    countryFlag: "AU",
-    responsibilities: ["Discord Moderator", "Backup Event Moderator"],
-  },
-  {
-    name: "Mizzen",
-    avatar: "Axolotl_8.png",
-    role: "Discord Staff",
-    country: "Coming soon",
-    countryFlag: "",
-    responsibilities: ["Discord Moderator", "Backup Event Moderator"],
-  },
-
-  // Event Staff Team
-  {
-    name: "Poke",
-    avatar: "Axolotl_9.png",
-    role: "Event Staff",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Jordan",
-    avatar: "Axolotl_10.png",
-    role: "Event Staff",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Stardust",
-    avatar: "Axolotl_11.png",
-    role: "Event Staff",
-    country: "Sweden",
-    countryFlag: "SE",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Onyx",
-    avatar: "Axolotl_12.png",
-    role: "Event Staff",
-    country: "Slovakia",
-    countryFlag: "SK",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Ashlyn",
-    avatar: "Axolotl_13.png",
-    role: "Event Staff",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Cutie",
-    avatar: "Axolotl_14.png",
-    role: "Event Staff",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "DatKid",
-    avatar: "Axolotl_15.png",
-    role: "Event Staff",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Event Moderator"],
-  },
-  {
-    name: "Layton",
-    avatar: "Axolotl_16.png",
-    role: "Event Staff",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Event Moderator"],
-  },
-
-  // Devs Dept
-  {
-    name: "KingCat",
-    avatar: "Axolotl_17.png",
-    role: "Core Dev",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Core Developer"],
-  },
-  {
-    name: "Orange",
-    avatar: "Axolotl_18.png",
-    role: "Game Dev",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "gufl",
-    avatar: "Axolotl_19.png",
-    role: "Game Dev",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "F0b1x",
-    avatar: "Axolotl_20.png",
-    role: "Game Dev",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "Aiden",
-    avatar: "Axolotl_21.png",
-    role: "Game Dev",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "Carson",
-    avatar: "Axolotl_22.png",
-    role: "Game Dev",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "Pritman",
-    avatar: "Axolotl_23.png",
-    role: "Game Dev",
-    country: "India",
-    countryFlag: "IN",
-    responsibilities: ["Game Developer"],
-  },
-  {
-    name: "Street",
-    avatar: "Axolotl_24.png",
-    role: "Animation Dev",
-    country: "Spain",
-    countryFlag: "ES",
-    responsibilities: ["Animator / Developer"],
-  },
-  {
-    name: "Millo",
-    avatar: "Axolotl_25.png",
-    role: "Website Dev",
-    country: "India",
-    countryFlag: "IN",
-    responsibilities: ["Website Developer"],
-  },
-
-  // Artists Dept
-  {
-    name: "Boss Isaz",
-    avatar: "Axolotl_11.png",
-    role: "Texture Pack Artist",
-    country: "France",
-    countryFlag: "FR",
-    responsibilities: ["Texture Pack Artist"],
-  },
-  {
-    name: "Rhais",
-    avatar: "Axolotl_11.png",
-    role: "Block Entity Artist",
-    country: "Russia",
-    countryFlag: "RU",
-    responsibilities: ["Block Entity Artist"],
-  },
-  {
-    name: "WinterStory",
-    avatar: "Axolotl_11.png",
-    role: "Weapons Artist",
-    country: "Slovakia",
-    countryFlag: "SK",
-    responsibilities: ["Weapons Artist"],
-  },
-  {
-    name: "Arlan",
-    avatar: "Axolotl_11.png",
-    role: "Armour Artist",
-    country: "Brazil",
-    countryFlag: "BR",
-    responsibilities: ["Armour Artist"],
-  },
-  {
-    name: "Gonzalo",
-    avatar: "Axolotl_11.png",
-    role: "Logo Artist",
-    country: "Argentina",
-    countryFlag: "AR",
-    responsibilities: ["Logo Artist"],
-  },
-  {
-    name: "Danny Pistachio",
-    avatar: "Axolotl_11.png",
-    role: "Logo Artist",
-    country: "Canada",
-    countryFlag: "CA",
-    responsibilities: ["Logo Artist"],
-  },
-
-  // Video Dept
-  {
-    name: "Satim",
-    avatar: "Axolotl_11.png",
-    role: "Animator",
-    country: "Algeria",
-    countryFlag: "DZ",
-    responsibilities: ["Animator"],
-  },
-
-  // Music Dept
-  {
-    name: "WillOWisp prod.",
-    avatar: "Axolotl_11.png",
-    role: "Music Producer",
-    country: "Greece",
-    countryFlag: "GR",
-    responsibilities: ["Music Production"],
-  },
-  {
-    name: "Turlough",
-    avatar: "Axolotl_11.png",
-    role: "Music Producer",
-    country: "New Zealand",
-    countryFlag: "NZ",
-    responsibilities: ["Music Production"],
-  },
-  {
-    name: "inod Studio",
-    avatar: "Axolotl_11.png",
-    role: "Music Producer",
-    country: "Indonesia",
-    countryFlag: "ID",
-    responsibilities: ["Music Production"],
-  },
-
-  // Voice Dept
-  {
-    name: "Seapeekay",
-    avatar: "Axolotl_11.png",
-    role: "Voice Actor",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Voice Acting"],
-  },
-  {
-    name: "Talenthia R.",
-    avatar: "Axolotl_11.png",
-    role: "Voice Actor",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Voice Acting"],
-  },
-  {
-    name: "Evelynn",
-    avatar: "Axolotl_11.png",
-    role: "Voice Actor",
-    country: "Australia",
-    countryFlag: "AU",
-    responsibilities: ["Voice Acting"],
-  },
-  {
-    name: "Holly Lindin",
-    avatar: "Axolotl_11.png",
-    role: "Voice Actor",
-    country: "America",
-    countryFlag: "US",
-    responsibilities: ["Voice Acting"],
-  },
-
-  // Model Dept
-  {
-    name: "KatieGoBrr",
-    avatar: "Axolotl_11.png",
-    role: "Model",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Model Designer"],
-  },
-  {
-    name: "Seapeekay",
-    avatar: "Axolotl_11.png",
-    role: "Model",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Model Designer"],
-  },
-  {
-    name: "Alina/Egg",
-    avatar: "Axolotl_11.png",
-    role: "Model",
-    country: "United Kingdom",
-    countryFlag: "GB",
-    responsibilities: ["Model Designer"],
-  },
-  {
-    name: "Ambear",
-    avatar: "Axolotl_11.png",
-    role: "Model",
-    country: "Belgium",
-    countryFlag: "BE",
-    responsibilities: ["Model Designer"],
-  },
+export const departments: Department[] = [
+  { id: 'owner', label: 'Owner' },
+  { id: 'managers', label: 'Managers' },
+  { id: 'discord', label: 'Discord Staff Team' },
+  { id: 'events', label: 'Event Staff Team' },
+  { id: 'developers', label: 'Developer Dept' },
+  { id: 'artists', label: 'Artists Dept' },
+  { id: 'builders', label: 'Builder Dept' },
+  { id: 'voice', label: 'Voice Dept' },
+  { id: 'models', label: 'Model Dept' },
+  { id: 'testing', label: 'Testing Dept' },
 ];
 
-// Helper function to organize team by departments
-export const organizeByDepartments = () => {
-  return {
-    owner: teamMembers.filter((member) => member.role === "Owner"),
-    managers: teamMembers.filter(
-      (member) =>
-        member.role === "Discord Manager" ||
-        member.role === "Roster Manager" ||
-        member.role === "Tester Manager"
-    ),
-    discordStaff: teamMembers.filter(
-      (member) => member.role === "Discord Staff"
-    ),
-    eventStaff: teamMembers.filter((member) => member.role === "Event Staff"),
-    devs: teamMembers.filter(
-      (member) => member.role.includes("Dev") && member.role !== "Head Dev"
-    ),
-    artists: teamMembers.filter(
-      (member) =>
-        member.role.includes("Artist") || member.role.includes("Texture")
-    ),
-    video: teamMembers.filter((member) => member.role === "Animator"),
-    music: teamMembers.filter((member) => member.role === "Music Producer"),
-    voice: teamMembers.filter((member) => member.role === "Voice Actor"),
-    models: teamMembers.filter((member) => member.role === "Model Designer"),
-    community: teamMembers.filter(
-      (member) => member.role === "Community Manager"
-    ),
-    testing: teamMembers.filter((member) => member.role === "Testing Manager"),
-  };
-};
+export interface TeamMember {
+  name: string;
+  skinFile: string;
+  role: string;
+  country: string;
+  countryFlag: string;
+  department: string;
+}
 
-// Flag emoji mapping
-export const getFlagEmoji = (countryCode: string): string => {
-  const flags: Record<string, string> = {
-    GB: "🇬🇧",
-    US: "🇺🇸",
-    AU: "🇦🇺",
-    FR: "🇫🇷",
-    SE: "🇸🇪",
-    SK: "🇸🇰",
-    IN: "🇮🇳",
-    BR: "🇧🇷",
-    AR: "🇦🇷",
-    CA: "🇨🇦",
-    DZ: "🇩🇿",
-    NZ: "🇳🇿",
-    ID: "🇮🇩",
-    GR: "🇬🇷",
-    DE: "🇩🇪",
-    UA: "🇺🇦",
-    SY: "🇸🇾",
-    RU: "🇷🇺", // Russia
-    ES: "🇪🇸", // Spain
-    BE: "🇧🇪", // Belgium
-  };
-  return flags[countryCode] || "🏳️";
-};
+export const teamMembers: TeamMember[] = [
+  // Owner
+  { name: 'Harp', skinFile: 'harp.png', role: 'Owner', country: 'United Kingdom', countryFlag: 'GB', department: 'owner' },
+
+  // Managers
+  { name: 'Seapeekay', skinFile: 'seapeekay.png', role: 'Multiple', country: 'United Kingdom', countryFlag: 'GB', department: 'managers' },
+  { name: 'Rice', skinFile: 'rice.png', role: 'Tester Manager', country: 'United Kingdom', countryFlag: 'GB', department: 'managers' },
+
+  // Discord Staff
+  { name: 'Chloe', skinFile: 'chloe.png', role: 'Discord Staff', country: 'United Kingdom', countryFlag: 'GB', department: 'discord' },
+  { name: 'Keltic', skinFile: 'keltic.png', role: 'Discord Staff', country: 'United Kingdom', countryFlag: 'GB', department: 'discord' },
+  { name: 'Fridge', skinFile: 'fridge.png', role: 'Discord Staff', country: 'America', countryFlag: 'US', department: 'discord' },
+
+  // Event Staff
+  { name: 'Poke', skinFile: 'poke.png', role: 'Event Staff', country: 'America', countryFlag: 'US', department: 'events' },
+  { name: 'Jordan', skinFile: 'jordan_event.png', role: 'Event Staff', country: 'America', countryFlag: 'US', department: 'events' },
+  { name: 'Ashlyn', skinFile: 'ashlyn.png', role: 'Event Staff', country: 'United Kingdom', countryFlag: 'GB', department: 'events' },
+  { name: 'Cutie', skinFile: 'cutie.png', role: 'Event Staff', country: 'United Kingdom', countryFlag: 'GB', department: 'events' },
+  { name: 'DatKid', skinFile: 'datkid.png', role: 'Event Staff', country: 'United Kingdom', countryFlag: 'GB', department: 'events' },
+
+  // Developer Dept
+  { name: 'Logic', skinFile: 'logic.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Cammy', skinFile: 'cammy.png', role: 'Developer', country: 'Australia', countryFlag: 'AU', department: 'developers' },
+  { name: 'King', skinFile: 'king.png', role: 'Developer', country: 'Canada', countryFlag: 'CA', department: 'developers' },
+  { name: 'BumpyJake', skinFile: 'bumpyjake.png', role: 'Developer', country: 'United Kingdom', countryFlag: 'GB', department: 'developers' },
+  { name: 'Kovah', skinFile: 'kovah.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Yeet', skinFile: 'yeet.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Apoco', skinFile: 'apoco.png', role: 'Developer', country: 'Spain', countryFlag: 'ES', department: 'developers' },
+  { name: 'Alex', skinFile: 'alex.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Street', skinFile: 'street.png', role: 'Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Carson', skinFile: 'carson.png', role: 'Assistant Developer', country: 'America', countryFlag: 'US', department: 'developers' },
+  { name: 'Desau', skinFile: 'desau.png', role: 'Assistant Developer', country: 'Spain', countryFlag: 'ES', department: 'developers' },
+  { name: 'Arthur', skinFile: 'arthur.png', role: 'Assistant Developer', country: 'Spain', countryFlag: 'ES', department: 'developers' },
+  { name: 'ElongatedOrange', skinFile: 'elongatedorange.png', role: 'Assistant Developer', country: 'United Kingdom', countryFlag: 'GB', department: 'developers' },
+
+  // Artists Dept
+  { name: 'Boss Isaz', skinFile: 'boss_isaz.png', role: 'Texture Pack Artist', country: 'France', countryFlag: 'FR', department: 'artists' },
+  { name: 'Rhais', skinFile: 'rhais.png', role: 'Block Entity Artist', country: 'Russia', countryFlag: 'RU', department: 'artists' },
+  { name: 'WinterStory', skinFile: 'winterstory.png', role: 'Weapons Artist', country: 'Slovakia', countryFlag: 'SK', department: 'artists' },
+  { name: 'Gonzalo', skinFile: 'gonzalo.png', role: 'Logo Artist', country: 'Argentina', countryFlag: 'AR', department: 'artists' },
+  { name: 'Danny Pistachio', skinFile: 'danny_pistachio.png', role: 'Logo Artist', country: 'Canada', countryFlag: 'CA', department: 'artists' },
+  { name: 'Jordan', skinFile: 'jordan_artist.png', role: 'Pixel Artist', country: 'America', countryFlag: 'US', department: 'artists' },
+  { name: 'Allie', skinFile: 'allie.png', role: 'Pixel Artist', country: 'Brazil', countryFlag: 'BR', department: 'artists' },
+  { name: 'Ale', skinFile: 'ale.png', role: 'Bossbar Artist', country: 'Spain', countryFlag: 'ES', department: 'artists' },
+  { name: 'Tsgumi', skinFile: 'tsgumi.png', role: 'Skin Designer', country: 'United Kingdom', countryFlag: 'GB', department: 'artists' },
+  { name: 'itscrayne', skinFile: 'itscrayne.png', role: 'Skin Designer', country: 'America', countryFlag: 'US', department: 'artists' },
+  { name: 'Smoog', skinFile: 'smoog.png', role: 'Concept Designer', country: 'United Kingdom', countryFlag: 'GB', department: 'artists' },
+  { name: 'Kint', skinFile: 'kint.png', role: 'Artist', country: 'America', countryFlag: 'US', department: 'artists' },
+
+  // Builder Dept
+  { name: 'Smoog', skinFile: 'smoog_builder.png', role: 'Builder', country: 'United Kingdom', countryFlag: 'GB', department: 'builders' },
+  { name: 'Ubi', skinFile: 'ubi.png', role: 'Builder', country: 'America', countryFlag: 'US', department: 'builders' },
+  { name: 'Avery', skinFile: 'avery.png', role: 'Builder', country: 'United Kingdom', countryFlag: 'GB', department: 'builders' },
+  { name: 'Bizzie', skinFile: 'bizzie.png', role: 'Builder', country: 'America', countryFlag: 'US', department: 'builders' },
+
+  // Voice Dept
+  { name: 'Seapeekay', skinFile: 'seapeekay_voice.png', role: 'Voice Actor', country: 'United Kingdom', countryFlag: 'GB', department: 'voice' },
+  { name: 'Talenthia R.', skinFile: 'talenthia.png', role: 'Voice Actor', country: 'America', countryFlag: 'US', department: 'voice' },
+  { name: 'Evelynn/Kaboodle', skinFile: 'kaboodle.png', role: 'Voice Actor', country: 'Australia', countryFlag: 'AU', department: 'voice' },
+  { name: 'Holly Lindin', skinFile: 'holly_lindin.png', role: 'Voice Actor', country: 'America', countryFlag: 'US', department: 'voice' },
+
+  // Model Dept
+  { name: 'KatieGoBrr', skinFile: 'katiegobrrr.png', role: 'Model', country: 'United Kingdom', countryFlag: 'GB', department: 'models' },
+  { name: 'Seapeekay', skinFile: 'seapeekay_model.png', role: 'Model', country: 'United Kingdom', countryFlag: 'GB', department: 'models' },
+  { name: 'Alina/Egg', skinFile: 'alina_egg.png', role: 'Model', country: 'United Kingdom', countryFlag: 'GB', department: 'models' },
+  { name: 'Ambear', skinFile: 'ambear.png', role: 'Model', country: 'Belgium', countryFlag: 'BE', department: 'models' },
+
+  // Testing Dept
+  { name: 'A_FatPenguin', skinFile: 'a_fatpenguin.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Beariok', skinFile: 'beariok.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Benji_Button', skinFile: 'benji_button.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Buggedwyvern', skinFile: 'buggedwyvern.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'CyaNideJ', skinFile: 'cyanidej.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'DaneLolDane', skinFile: 'daneloldane.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'JohnnyHT', skinFile: 'johnnyht.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Keiltic', skinFile: 'keiltic.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'KingDixie', skinFile: 'kingdixie.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'LGasp', skinFile: 'lgasp.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'LiariVT', skinFile: 'liarivt.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'LogyBanana', skinFile: 'logybanana.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Lydianaa', skinFile: 'lydianaa.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Menaces', skinFile: 'menaces.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'MidnightSunna', skinFile: 'midnightsunna.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Neochampy', skinFile: 'neochampy.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'OceanTSQ', skinFile: 'oceantsq.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'oErrex', skinFile: 'oerrex.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'ogglide', skinFile: 'ogglide.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'PatMonster101', skinFile: 'patmonster.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Pedrinhocas', skinFile: 'pedrinhocas.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'RainiiBlue', skinFile: 'rainiiblue.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'SaltContent', skinFile: 'saltcontent.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Skeletonie', skinFile: 'skeletonie.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'SpicyRaider', skinFile: 'spicyraider.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'StarGazxr', skinFile: 'stargazxr.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'TankMatt', skinFile: 'tankmatt.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'ThatIrishFella', skinFile: 'thatirishfella.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+  { name: 'Vesper1706', skinFile: 'vesper.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
+];
+
+export function getFlagEmoji(countryCode: string): string {
+  if (!countryCode) return '';
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0));
+  return String.fromCodePoint(...codePoints);
+}
+
+export const getMembersByDepartment = (deptId: string) => teamMembers.filter(m => m.department === deptId);
