@@ -97,7 +97,6 @@ export const teamMembers: TeamMember[] = [
   // Testing Dept
   { name: 'A_FatPenguin', skinFile: 'a_fatpenguin.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
   { name: 'Beariok', skinFile: 'beariok.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
-  { name: 'Benji_Button', skinFile: 'benji_button.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
   { name: 'Buggedwyvern', skinFile: 'buggedwyvern.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
   { name: 'CyaNideJ', skinFile: 'cyanidej.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
   { name: 'DaneLolDane', skinFile: 'daneloldane.png', role: 'Tester', country: '', countryFlag: '', department: 'testing' },
