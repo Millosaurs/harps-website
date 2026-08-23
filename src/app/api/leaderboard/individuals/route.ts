@@ -42,36 +42,42 @@ export async function GET(request: NextRequest) {
     }
 
     // Check for per-game player scores in the event export's game history
-    let playerScores: Record<string, number>;
+    let playerScores: Record<string, number> | null = null;
     if (gameId && eventJson?.gameHistory) {
       const gameResult = eventJson.gameHistory.find(
         (g: { gameId: string }) => g.gameId === gameId,
       );
-      playerScores = gameResult?.playerScores ?? {};
-    } else {
-      // Fallback to cumulative scores
-      playerScores = scoresJson.playerScores ?? {};
+      if (gameResult?.playerScores) {
+        playerScores = gameResult.playerScores;
+      }
     }
+    
+    // If we didn't find per-game scores, fallback to cumulative
+    const resolvedScores: Record<string, number> = playerScores || (scoresJson.playerScores ?? {});
 
-    const uuids = Object.keys(playerScores);
+    // Combine players who have scores + all players in teams (so we show 0-score players)
+    const allUuids = [...new Set([
+      ...Object.keys(resolvedScores),
+      ...Object.keys(teamByUuid),
+    ])];
 
-    // If no player scores at all, return empty
-    if (uuids.length === 0) {
+    // If no players exist at all, return empty
+    if (allUuids.length === 0) {
       return NextResponse.json({ data: [], success: true });
     }
 
     // Resolve all UUIDs → Minecraft usernames via Mojang
-    const nameByUuid = await resolveUsernames(uuids);
+    const nameByUuid = await resolveUsernames(allUuids);
 
     // Transform playerScores map → frontend Individual[]
-    const individuals = uuids
+    const individuals = allUuids
       .map((uuid) => {
         const username = nameByUuid[uuid] ?? uuid.substring(0, 8);
         return {
           rank: 0,
           name: username,
           avatar: nameByUuid[uuid] ?? uuid,
-          score: playerScores[uuid] ?? 0,
+          score: resolvedScores[uuid] ?? 0,
           team: teamByUuid[uuid] ?? null,
         };
       })
