@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PROXY_API_URL, EVENT_ID } from "@/lib/api";
+import { PROXY_API_URL, EVENT_ID, resolveUsernames } from "@/lib/api";
 
 /**
  * GET /api/leaderboard/individuals
@@ -9,7 +9,10 @@ import { PROXY_API_URL, EVENT_ID } from "@/lib/api";
  *
  * Proxy endpoints used:
  *   GET /api/scores/{eventId}  → playerScores (UUID → points)
- *   GET /api/event/{eventId}   → player name resolution (UUID → username)
+ *   GET /api/event/{eventId}   → player UUID lists per team (for team colour)
+ *
+ * UUIDs are resolved to Minecraft usernames via Mojang's session server so
+ * the frontend can display real names and real player heads.
  */
 export async function GET() {
   try {
@@ -29,32 +32,48 @@ export async function GET() {
     const scoresJson = await scoresRes.json();
     const eventJson = eventRes.ok ? await eventRes.json() : null;
 
-    // Build UUID → player name lookup from the event export's team rosters
-    const nameByUuid: Record<string, string> = {};
+    // Build UUID → team name lookup from the event export's team rosters
+    // (players may be UUID strings or legacy {uuid, name} objects)
+    const teamByUuid: Record<string, string> = {};
+    const teamColorByName: Record<string, string> = {};
     if (eventJson?.teams) {
       for (const team of eventJson.teams) {
+        teamColorByName[team.name] = team.color ?? "#666666";
         for (const player of team.players ?? []) {
-          nameByUuid[player.uuid] = player.name;
+          const uuid = typeof player === "string" ? player : player.uuid;
+          teamByUuid[uuid] = team.name;
         }
       }
     }
-    // Also check top-level playerNames if the export includes them
-    if (eventJson?.playerNames) {
-      for (const [uuid, name] of Object.entries(eventJson.playerNames)) {
-        nameByUuid[uuid] = name as string;
-      }
-    }
+
+    // playerScores from the proxy: { UUID: points, ... }
+    const playerScores: Record<string, number> = scoresJson.playerScores ?? {};
+    const uuids = Object.keys(playerScores);
+
+    // Also include any UUIDs from the event roster that have 0 score
+    const allUuids = [...new Set([
+      ...uuids,
+      ...Object.keys(teamByUuid),
+    ])];
+
+    // Resolve all UUIDs → Minecraft usernames via Mojang
+    const nameByUuid = await resolveUsernames(allUuids);
 
     // Transform playerScores map → frontend Individual[]
-    const playerScores: Record<string, number> = scoresJson.playerScores ?? {};
-
-    const individuals = Object.entries(playerScores)
-      .map(([uuid, score]) => ({
-        rank: 0, // assigned after sort
-        name: nameByUuid[uuid] ?? uuid.substring(0, 8), // fallback to short UUID
-        score,
-        avatar: nameByUuid[uuid] ?? "Steve", // MinecraftHead uses this as username
-      }))
+    const individuals = uuids
+      .map((uuid) => {
+        const username = nameByUuid[uuid] ?? uuid.substring(0, 8);
+        const teamName = teamByUuid[uuid];
+        return {
+          rank: 0, // assigned after sort
+          name: username,
+          // mc-heads.net accepts UUIDs for the image — use resolved name if available
+          avatar: nameByUuid[uuid] ?? uuid,
+          score: playerScores[uuid] ?? 0,
+          team: teamName ?? null,
+          teamColor: teamName ? (teamColorByName[teamName] ?? "#666666") : null,
+        };
+      })
       // Sort descending by score
       .sort((a, b) => b.score - a.score)
       .map((p, idx) => {

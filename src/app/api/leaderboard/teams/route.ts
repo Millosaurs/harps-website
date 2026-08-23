@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PROXY_API_URL, EVENT_ID, getTeamIcon, getAvatarUrl } from "@/lib/api";
+import { PROXY_API_URL, EVENT_ID, getTeamIcon, resolveUsernames } from "@/lib/api";
 
 /**
  * GET /api/leaderboard/teams
@@ -10,6 +10,10 @@ import { PROXY_API_URL, EVENT_ID, getTeamIcon, getAvatarUrl } from "@/lib/api";
  * Proxy endpoints used:
  *   GET /api/teams/{eventId}   → team names, colors, scores, playerCount
  *   GET /api/event/{eventId}   → full event export with player rosters
+ *
+ * The proxy returns players as bare UUID strings. We resolve UUIDs → Minecraft
+ * usernames via Mojang's session server so the frontend can display real names
+ * and real player heads.
  */
 export async function GET() {
   try {
@@ -29,14 +33,22 @@ export async function GET() {
     const teamsJson = await teamsRes.json();
     const eventJson = eventRes.ok ? await eventRes.json() : null;
 
-    // Build a lookup from team name → player list from the full event export.
-    // The event export shape: { teams: [{ name, color, players: [{ uuid, name }] }] }
-    const rosterByTeam: Record<string, { uuid: string; name: string }[]> = {};
+    // The proxy returns players as bare UUID strings, e.g.:
+    //   "players": ["99bb8bf5-be28-409b-9514-768bff6164cf"]
+    // Build a lookup: team name → UUID[]
+    const rosterByTeam: Record<string, string[]> = {};
     if (eventJson?.teams) {
       for (const t of eventJson.teams) {
-        rosterByTeam[t.name] = t.players ?? [];
+        // players may be UUID strings or legacy {uuid, name} objects — handle both
+        rosterByTeam[t.name] = (t.players ?? []).map((p: string | { uuid: string }) =>
+          typeof p === "string" ? p : p.uuid,
+        );
       }
     }
+
+    // Collect all unique UUIDs across all teams and resolve them to usernames
+    const allUuids = [...new Set(Object.values(rosterByTeam).flat())];
+    const nameByUuid = await resolveUsernames(allUuids);
 
     // Transform proxy teams → frontend Team[]
     interface ProxyTeam {
@@ -55,9 +67,11 @@ export async function GET() {
           score: t.score ?? 0,
           color: t.color ?? "#666666",
           icon: getTeamIcon(t.name),
-          players: roster.map((p: { uuid: string; name: string }) => ({
-            name: p.name,
-            avatar: p.name, // MinecraftHead component uses this as the username
+          players: roster.map((uuid: string) => ({
+            // Resolved username for display; falls back to short UUID
+            name: nameByUuid[uuid] ?? uuid.substring(0, 8),
+            // mc-heads.net accepts UUIDs directly for the head image
+            avatar: nameByUuid[uuid] ?? uuid,
           })),
         };
       })
