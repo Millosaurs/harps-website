@@ -168,7 +168,7 @@ const MINECRAFT_USERNAMES = [
 
 // Function to get Minecraft player head URL
 const getMinecraftHead = (username: string, size: number = 32): string => {
-    return `https://mc-heads.net/avatar/Harp6288/${size}`;
+    return `https://mc-heads.net/avatar/${encodeURIComponent(username)}/${size}`;
 };
 
 // Function to get random Minecraft username
@@ -990,37 +990,20 @@ const GameLeaderboards: React.FC = () => {
         setError(null);
 
         try {
-            // Replace with actual API calls to your different game tables
+            // Fetch real data from the Next.js proxy routes
+            // (which in turn fetch from EventCore-Proxy)
             const [teamsResponse, individualsResponse] = await Promise.all([
-                // fetch(`/api/games/${game.id}/teams`).then(res => res.json() as Promise<ApiResponse<Team[]>>),
-                // fetch(`/api/games/${game.id}/individuals`).then(res => res.json() as Promise<ApiResponse<Individual[]>>)
-
-                // Simulated API calls - replace with actual endpoints
-                new Promise<ApiResponse<Team[]>>((resolve) =>
-                    setTimeout(
-                        () =>
-                            resolve({
-                                data: SAMPLE_DATA[game.id]?.teams || [],
-                                success: true,
-                            }),
-                        800,
-                    ),
+                fetch("/api/leaderboard/teams").then(
+                    (res) => res.json() as Promise<ApiResponse<Team[]>>,
                 ),
-                new Promise<ApiResponse<Individual[]>>((resolve) =>
-                    setTimeout(
-                        () =>
-                            resolve({
-                                data: SAMPLE_DATA[game.id]?.individuals || [],
-                                success: true,
-                            }),
-                        800,
-                    ),
+                fetch("/api/leaderboard/individuals").then(
+                    (res) => res.json() as Promise<ApiResponse<Individual[]>>,
                 ),
             ]);
 
             setGameData({
-                teams: teamsResponse.data,
-                individuals: individualsResponse.data,
+                teams: teamsResponse.data ?? [],
+                individuals: individualsResponse.data ?? [],
             });
         } catch (err) {
             const errorMessage =
