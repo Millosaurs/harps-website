@@ -352,25 +352,6 @@ const TeamRow: React.FC<TeamRowProps> = ({ team, gameId }) => (
                     <span className="text-yellow-400 font-bold text-lg">
                         {team.score.toLocaleString()}
                     </span>
-                    <svg
-                        version="1.2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                        width="24"
-                        height="24"
-                    >
-                        <title>points</title>
-                        <defs>
-                            <image
-                                width="32"
-                                height="32"
-                                id="img1"
-                                href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IB2cksfwAAAEJQTFRFMzMzOi4uMTEx90A191k1dzsz91Y191c291Q291M190o591A19081900190w190k1Qyws90c190Y190U190M190I1eRUEzQAAABZ0Uk5TFBYV//8e/////////////xf//////+1d9cUAAAEESURBVHicpZABc4IwDIVfjFjZHKI3//8P3E6RORRrxkqhpVS33Y6Wo8nrR0Ie4Y9F/wWIviZWmAow5FeACU1MxMAdEQKJ7kskOgJmbvZxDyvT+OcCoteoi6mXB4CpsUQHsMxvVuc5XHBjkaEFS5dyAi2h4KawginZAQx/74GFiHmgGlBt8CvP9AgAL7Us0ZhNZl84uUhkFKdXSXE2kXnz4uzsGJzklKo+fELl7QqtzvBpz2eUkdXuw1rZs1bVQ4BVvdI1VHJaneQeyD+yMitbK9AGL0UM8Pq4PooLgXgKzou8kAeJBzY4bN775PVgshgA/H1L+B4O2O23b8HEu30M/LimA9/1j3IhQAi4igAAAABJRU5ErkJggg=="
-                            />
-                        </defs>
-                        <style></style>
-                        <use id="Background" href="#img1" x="0" y="0" />
-                    </svg>
                 </div>
             </div>
             {/* Bottom row: Player heads */}
@@ -426,27 +407,6 @@ const TeamRow: React.FC<TeamRowProps> = ({ team, gameId }) => (
                     <span className="text-yellow-400 font-bold text-lg">
                         {team.score.toLocaleString()}
                     </span>
-                    <span className="text-yellow-400 text-sm">
-                        <svg
-                            version="1.2"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            width="32"
-                            height="32"
-                        >
-                            <title>points</title>
-                            <defs>
-                                <image
-                                    width="32"
-                                    height="32"
-                                    id="img1"
-                                    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IB2cksfwAAAEJQTFRFMzMzOi4uMTEx90A191k1dzsz91Y191c291Q291M190o591A19081900190w190k1Qyws90c190Y190U190M190I1eRUEzQAAABZ0Uk5TFBYV//8e/////////////xf//////+1d9cUAAAEESURBVHicpZABc4IwDIVfjFjZHKI3//8P3E6RORRrxkqhpVS33Y6Wo8nrR0Ie4Y9F/wWIviZWmAow5FeACU1MxMAdEQKJ7kskOgJmbvZxDyvT+OcCoteoi6mXB4CpsUQHsMxvVuc5XHBjkaEFS5dyAi2h4KawginZAQx/74GFiHmgGlBt8CvP9AgAL7Us0ZhNZl84uUhkFKdXSXE2kXnz4uzsGJzklKo+fELl7QqtzvBpz2eUkdXuw1rZs1bVQ4BVvdI1VHJaneQeyD+yMitbK9AGL0UM8Pq4PooLgXgKzou8kAeJBzY4bN775PVgshgA/H1L+B4O2O23b8HEu30M/LimA9/1j3IhQAi4igAAAABJRU5ErkJggg=="
-                                />
-                            </defs>
-                            <style></style>
-                            <use id="Background" href="#img1" x="0" y="0" />
-                        </svg>
-                    </span>
                 </div>
             </div>
         </div>
@@ -488,25 +448,6 @@ const IndividualRow: React.FC<IndividualRowProps> = ({ player }) => (
                     <span className="text-yellow-400 font-bold text-lg">
                         {player.score.toLocaleString()}
                     </span>
-                    <svg
-                        version="1.2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                        width="24"
-                        height="24"
-                    >
-                        <title>points</title>
-                        <defs>
-                            <image
-                                width="32"
-                                height="32"
-                                id="img1"
-                                href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IB2cksfwAAAEJQTFRFMzMzOi4uMTEx90A191k1dzsz91Y191c291Q291M190o591A19081900190w190k1Qyws90c190Y190U190M190I1eRUEzQAAABZ0Uk5TFBYV//8e/////////////xf//////+1d9cUAAAEESURBVHicpZABc4IwDIVfjFjZHKI3//8P3E6RORRrxkqhpVS33Y6Wo8nrR0Ie4Y9F/wWIviZWmAow5FeACU1MxMAdEQKJ7kskOgJmbvZxDyvT+OcCoteoi6mXB4CpsUQHsMxvVuc5XHBjkaEFS5dyAi2h4KawginZAQx/74GFiHmgGlBt8CvP9AgAL7Us0ZhNZl84uUhkFKdXSXE2kXnz4uzsGJzklKo+fELl7QqtzvBpz2eUkdXuw1rZs1bVQ4BVvdI1VHJaneQeyD+yMitbK9AGL0UM8Pq4PooLgXgKzou8kAeJBzY4bN775PVgshgA/H1L+B4O2O23b8HEu30M/LimA9/1j3IhQAi4igAAAABJRU5ErkJggg=="
-                            />
-                        </defs>
-                        <style></style>
-                        <use id="Background" href="#img1" x="0" y="0" />
-                    </svg>
                 </div>
             </div>
         </div>
@@ -537,27 +478,6 @@ const IndividualRow: React.FC<IndividualRowProps> = ({ player }) => (
             <div className="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full">
                 <span className="text-yellow-400 font-bold text-lg">
                     {player.score.toLocaleString()}
-                </span>
-                <span className="text-yellow-400 text-sm">
-                    <svg
-                        version="1.2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                        width="32"
-                        height="32"
-                    >
-                        <title>points</title>
-                        <defs>
-                            <image
-                                width="32"
-                                height="32"
-                                id="img1"
-                                href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IB2cksfwAAAEJQTFRFMzMzOi4uMTEx90A191k1dzsz91Y191c291Q291M190o591A19081900190w190k1Qyws90c190Y190U190M190I1eRUEzQAAABZ0Uk5TFBYV//8e/////////////xf//////+1d9cUAAAEESURBVHicpZABc4IwDIVfjFjZHKI3//8P3E6RORRrxkqhpVS33Y6Wo8nrR0Ie4Y9F/wWIviZWmAow5FeACU1MxMAdEQKJ7kskOgJmbvZxDyvT+OcCoteoi6mXB4CpsUQHsMxvVuc5XHBjkaEFS5dyAi2h4KawginZAQx/74GFiHmgGlBt8CvP9AgAL7Us0ZhNZl84uUhkFKdXSXE2kXnz4uzsGJzklKo+fELl7QqtzvBpz2eUkdXuw1rZs1bVQ4BVvdI1VHJaneQeyD+yMitbK9AGL0UM8Pq4PooLgXgKzou8kAeJBzY4bN775PVgshgA/H1L+B4O2O23b8HEu30M/LimA9/1j3IhQAi4igAAAABJRU5ErkJggg=="
-                            />
-                        </defs>
-                        <style></style>
-                        <use id="Background" href="#img1" x="0" y="0" />
-                    </svg>
                 </span>
             </div>
         </div>
@@ -993,10 +913,10 @@ const GameLeaderboards: React.FC = () => {
             // Fetch real data from the Next.js proxy routes
             // (which in turn fetch from EventCore-Proxy)
             const [teamsResponse, individualsResponse] = await Promise.all([
-                fetch("/api/leaderboard/teams").then(
+                fetch(`/api/leaderboard/teams?game=${encodeURIComponent(game.id)}`).then(
                     (res) => res.json() as Promise<ApiResponse<Team[]>>,
                 ),
-                fetch("/api/leaderboard/individuals").then(
+                fetch(`/api/leaderboard/individuals?game=${encodeURIComponent(game.id)}`).then(
                     (res) => res.json() as Promise<ApiResponse<Individual[]>>,
                 ),
             ]);
