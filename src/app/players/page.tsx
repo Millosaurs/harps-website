@@ -1108,7 +1108,7 @@ const GameLeaderboards: React.FC = () => {
                             </div>
 
                             {gameData.individuals.length > 0 ? (
-                                <div className="space-y-2">
+                                <div className="space-y-2 max-h-[600px] lg:max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
                                     {gameData.individuals.map((player) => (
                                         <IndividualRow
                                             key={`${selectedGame.id}-player-${player.rank}`}
@@ -1159,6 +1159,20 @@ const GameLeaderboards: React.FC = () => {
                 .hide-scrollbar {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
+                }
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 6px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: rgba(30, 41, 59, 0.5);
+                    border-radius: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: rgba(148, 163, 184, 0.3);
+                    border-radius: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: rgba(148, 163, 184, 0.5);
                 }
             `}</style>
         </div>
