@@ -988,31 +988,43 @@ const GameLeaderboards: React.FC = () => {
     }, [selectedGame]);
 
     // Apply WS score updates directly to gameData — no re-fetch, no loading flash.
-    // For "overall", use cumulative totals; for specific games, use per-game scores.
+    // For "overall", use cumulative totals; for specific games, ONLY use per-game
+    // scores if they exist (don't fall back to cumulative — that would leak scores
+    // from other games into this tab).
     useEffect(() => {
         const isOverall = selectedGame.id === "overall";
-        const gameTeamScores = isOverall ? wsTeamScores : (perGameTeamScores?.[selectedGame.id] ?? wsTeamScores);
-        const gamePlayerScores = isOverall ? wsPlayerScores : (perGamePlayerScores?.[selectedGame.id] ?? wsPlayerScores);
+        const gameTeamScores = isOverall
+            ? wsTeamScores
+            : (perGameTeamScores?.[selectedGame.id] ?? null);
+        const gamePlayerScores = isOverall
+            ? wsPlayerScores
+            : (perGamePlayerScores?.[selectedGame.id] ?? null);
+
+        // Nothing to update for this game tab
         if (!gameTeamScores && !gamePlayerScores) return;
 
         setGameData((prev) => {
             if (!prev) return prev;
 
             // Teams: match by name with and without "Team " prefix
-            const updatedTeams = prev.teams.map((team) => {
-                const key = team.name.replace(/^Team\s+/i, "");
-                const wsScore = gameTeamScores?.[key] ?? gameTeamScores?.[team.name];
-                return wsScore !== undefined ? { ...team, score: wsScore } : team;
-            });
+            const updatedTeams = gameTeamScores
+                ? prev.teams.map((team) => {
+                    const key = team.name.replace(/^Team\s+/i, "");
+                    const wsScore = gameTeamScores[key] ?? gameTeamScores[team.name];
+                    return wsScore !== undefined ? { ...team, score: wsScore } : team;
+                })
+                : [...prev.teams];
             updatedTeams.sort((a, b) => b.score - a.score);
             updatedTeams.forEach((t, i) => { t.rank = i + 1; });
 
-            // Individuals: match by UUID first (WS keys are UUIDs), fall back to name
-            const updatedIndividuals = prev.individuals.map((player) => {
-                const wsScore = (player.uuid ? gamePlayerScores?.[player.uuid] : undefined)
-                    ?? gamePlayerScores?.[player.name];
-                return wsScore !== undefined ? { ...player, score: wsScore } : player;
-            });
+            // Individuals: match by UUID (WS keys are UUIDs)
+            const updatedIndividuals = gamePlayerScores
+                ? prev.individuals.map((player) => {
+                    const wsScore = (player.uuid ? gamePlayerScores[player.uuid] : undefined)
+                        ?? gamePlayerScores[player.name];
+                    return wsScore !== undefined ? { ...player, score: wsScore } : player;
+                })
+                : [...prev.individuals];
             updatedIndividuals.sort((a, b) => b.score - a.score);
             updatedIndividuals.forEach((p, i) => { p.rank = i + 1; });
 
