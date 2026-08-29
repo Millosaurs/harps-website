@@ -73,6 +73,7 @@ export async function GET(request: NextRequest) {
           name: username,
           avatar: nameByUuid[uuid] ?? uuid,
           score: resolvedScores[uuid] ?? 0,
+          uuid, // passed to frontend for WS score matching
           team: teamByUuid[uuid] ?? null,
         };
       })

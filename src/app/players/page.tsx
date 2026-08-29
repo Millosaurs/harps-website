@@ -24,6 +24,7 @@ interface Individual {
     name: string;
     score: number;
     avatar: string;
+    uuid?: string; // present when loaded from API — used for WS score matching
 }
 
 interface Game {
@@ -940,7 +941,7 @@ const GameLeaderboards: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const { teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected } = useEventWebSocket();
+    const { perGameTeamScores, perGamePlayerScores, teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected } = useEventWebSocket();
 
     // Fetch leaderboard data for specific game
     const fetchGameData = async (game: Game): Promise<void> => {
@@ -980,22 +981,29 @@ const GameLeaderboards: React.FC = () => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
 
-    // Apply WS score updates directly to gameData — no re-fetch, no loading flash
+    // Apply WS score updates directly to gameData — no re-fetch, no loading flash.
+    // Prefer per-game scores for the selected game; fall back to cumulative totals.
     useEffect(() => {
-        if (!wsTeamScores && !wsPlayerScores) return;
+        const gameTeamScores = perGameTeamScores?.[selectedGame.id] ?? wsTeamScores;
+        const gamePlayerScores = perGamePlayerScores?.[selectedGame.id] ?? wsPlayerScores;
+        if (!gameTeamScores && !gamePlayerScores) return;
+
         setGameData((prev) => {
             if (!prev) return prev;
+
+            // Teams: match by name with and without "Team " prefix
             const updatedTeams = prev.teams.map((team) => {
                 const key = team.name.replace(/^Team\s+/i, "");
-                const wsScore = wsTeamScores?.[key] ?? wsTeamScores?.[team.name];
+                const wsScore = gameTeamScores?.[key] ?? gameTeamScores?.[team.name];
                 return wsScore !== undefined ? { ...team, score: wsScore } : team;
             });
-            // Re-sort by score and update ranks
             updatedTeams.sort((a, b) => b.score - a.score);
             updatedTeams.forEach((t, i) => { t.rank = i + 1; });
 
+            // Individuals: match by UUID first (WS keys are UUIDs), fall back to name
             const updatedIndividuals = prev.individuals.map((player) => {
-                const wsScore = wsPlayerScores?.[player.name];
+                const wsScore = (player.uuid ? gamePlayerScores?.[player.uuid] : undefined)
+                    ?? gamePlayerScores?.[player.name];
                 return wsScore !== undefined ? { ...player, score: wsScore } : player;
             });
             updatedIndividuals.sort((a, b) => b.score - a.score);
@@ -1003,7 +1011,7 @@ const GameLeaderboards: React.FC = () => {
 
             return { teams: updatedTeams, individuals: updatedIndividuals };
         });
-    }, [wsTeamScores, wsPlayerScores]);
+    }, [perGameTeamScores, perGamePlayerScores, wsTeamScores, wsPlayerScores, selectedGame.id]);
 
     const handleGameSelect = (game: Game): void => {
         if (game.id !== selectedGame.id) {

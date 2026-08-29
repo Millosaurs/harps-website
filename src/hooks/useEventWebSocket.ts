@@ -12,10 +12,12 @@ interface EventState {
 export function useEventWebSocket() {
   const [teamScores, setTeamScores] = useState<Record<string, number> | null>(null);
   const [playerScores, setPlayerScores] = useState<Record<string, number> | null>(null);
+  // Per-game scores: { gameId: { teamName/uuid: score } }
+  const [perGameTeamScores, setPerGameTeamScores] = useState<Record<string, Record<string, number>> | null>(null);
+  const [perGamePlayerScores, setPerGamePlayerScores] = useState<Record<string, Record<string, number>> | null>(null);
   const [teams, setTeams] = useState<Team[] | null>(null);
   const [eventState, setEventState] = useState<EventState | null>(null);
   const [connected, setConnected] = useState(false);
-  const [lastScoreUpdate, setLastScoreUpdate] = useState<number>(0);
 
   const ws = useRef<WebSocket | null>(null);
   const reconnectTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -46,7 +48,6 @@ export function useEventWebSocket() {
       };
 
       socket.onerror = () => {
-        // onerror will also trigger onclose, so we let onclose handle the reconnect
         socket.close();
       };
 
@@ -60,7 +61,8 @@ export function useEventWebSocket() {
             case "SCORE_UPDATE":
               if (msg.data.teamScores) setTeamScores(msg.data.teamScores);
               if (msg.data.playerScores) setPlayerScores(msg.data.playerScores);
-              setLastScoreUpdate(msg.timestamp || Date.now());
+              if (msg.data.perGameTeamScores) setPerGameTeamScores(msg.data.perGameTeamScores);
+              if (msg.data.perGamePlayerScores) setPerGamePlayerScores(msg.data.perGamePlayerScores);
               break;
             case "TEAM_UPDATE":
               if (msg.data.teams) setTeams(msg.data.teams);
@@ -94,5 +96,6 @@ export function useEventWebSocket() {
     };
   }, [connect]);
 
-  return { teamScores, playerScores, teams, connected, eventState, lastScoreUpdate };
+  return { teamScores, playerScores, perGameTeamScores, perGamePlayerScores, teams, connected, eventState };
 }
+
