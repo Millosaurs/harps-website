@@ -351,7 +351,7 @@ const TeamRow: React.FC<TeamRowProps> = ({ team, gameId }) => (
                 </div>
                 <div className="flex items-center space-x-1 bg-gray-900/50 px-3 py-1.5 rounded-full">
                     <span className="text-yellow-400 font-bold text-lg">
-                        {team.score.toLocaleString()}
+                        <AnimatedScore value={team.score} />
                     </span>
                 </div>
             </div>
@@ -406,7 +406,7 @@ const TeamRow: React.FC<TeamRowProps> = ({ team, gameId }) => (
             <div className="flex items-center justify-end">
                 <div className="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full">
                     <span className="text-yellow-400 font-bold text-lg">
-                        {team.score.toLocaleString()}
+                        <AnimatedScore value={team.score} />
                     </span>
                 </div>
             </div>
@@ -447,7 +447,7 @@ const IndividualRow: React.FC<IndividualRowProps> = ({ player }) => (
                 </div>
                 <div className="flex items-center space-x-1 bg-gray-900/50 px-3 py-1.5 rounded-full ml-2 flex-shrink-0">
                     <span className="text-yellow-400 font-bold text-lg">
-                        {player.score.toLocaleString()}
+                        <AnimatedScore value={player.score} />
                     </span>
                 </div>
             </div>
@@ -478,7 +478,7 @@ const IndividualRow: React.FC<IndividualRowProps> = ({ player }) => (
             </div>
             <div className="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full">
                 <span className="text-yellow-400 font-bold text-lg">
-                    {player.score.toLocaleString()}
+                    <AnimatedScore value={player.score} />
                 </span>
             </div>
         </div>
@@ -546,6 +546,41 @@ const EmptyState: React.FC<EmptyStateProps> = ({ title, gameName, icon }) => (
         </p>
     </div>
 );
+
+// Animated score: smoothly counts up to the new value when it changes
+const AnimatedScore: React.FC<{ value: number }> = ({ value }) => {
+    const [displayed, setDisplayed] = useState(value);
+    const prev = useRef(value);
+    const raf = useRef<number | null>(null);
+
+    useEffect(() => {
+        const from = prev.current;
+        const to = value;
+        if (from === to) return;
+        prev.current = to;
+
+        const duration = 600; // ms
+        const start = performance.now();
+
+        const tick = (now: number) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setDisplayed(Math.round(from + (to - from) * eased));
+            if (progress < 1) {
+                raf.current = requestAnimationFrame(tick);
+            }
+        };
+
+        raf.current = requestAnimationFrame(tick);
+        return () => {
+            if (raf.current !== null) cancelAnimationFrame(raf.current);
+        };
+    }, [value]);
+
+    return <>{displayed.toLocaleString()}</>;
+};
 
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
@@ -905,7 +940,7 @@ const GameLeaderboards: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const { teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected, lastScoreUpdate } = useEventWebSocket();
+    const { teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected } = useEventWebSocket();
 
     // Fetch leaderboard data for specific game
     const fetchGameData = async (game: Game): Promise<void> => {
@@ -945,12 +980,30 @@ const GameLeaderboards: React.FC = () => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
 
-    // Re-fetch data from API when WebSocket notifies us of score changes
+    // Apply WS score updates directly to gameData — no re-fetch, no loading flash
     useEffect(() => {
-        if (lastScoreUpdate > 0) {
-            fetchGameData(selectedGame);
-        }
-    }, [lastScoreUpdate]);
+        if (!wsTeamScores && !wsPlayerScores) return;
+        setGameData((prev) => {
+            if (!prev) return prev;
+            const updatedTeams = prev.teams.map((team) => {
+                const key = team.name.replace(/^Team\s+/i, "");
+                const wsScore = wsTeamScores?.[key] ?? wsTeamScores?.[team.name];
+                return wsScore !== undefined ? { ...team, score: wsScore } : team;
+            });
+            // Re-sort by score and update ranks
+            updatedTeams.sort((a, b) => b.score - a.score);
+            updatedTeams.forEach((t, i) => { t.rank = i + 1; });
+
+            const updatedIndividuals = prev.individuals.map((player) => {
+                const wsScore = wsPlayerScores?.[player.name];
+                return wsScore !== undefined ? { ...player, score: wsScore } : player;
+            });
+            updatedIndividuals.sort((a, b) => b.score - a.score);
+            updatedIndividuals.forEach((p, i) => { p.rank = i + 1; });
+
+            return { teams: updatedTeams, individuals: updatedIndividuals };
+        });
+    }, [wsTeamScores, wsPlayerScores]);
 
     const handleGameSelect = (game: Game): void => {
         if (game.id !== selectedGame.id) {
