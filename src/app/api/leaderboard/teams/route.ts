@@ -76,8 +76,10 @@ export async function GET(request: NextRequest) {
     const teams = (teamsJson.teams as ProxyTeam[])
       .map((t: ProxyTeam) => {
         const roster = rosterByTeam[t.name] ?? [];
-        // Use resolved score if available, otherwise 0
-        const score = resolvedTeamScores[t.name] ?? (t.score ?? 0);
+        // Use resolved per-game score if available.
+        // When a specific game is selected, don't fall back to cumulative t.score — show 0.
+        // Only use t.score as fallback for "overall" (no gameId filter).
+        const score = resolvedTeamScores[t.name] ?? (gameId ? 0 : (t.score ?? 0));
         return {
           rank: 0,
           name: t.name,
