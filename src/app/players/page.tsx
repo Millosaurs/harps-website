@@ -47,78 +47,79 @@ interface ApiResponse<T> {
 }
 
 // Game configurations with their respective SVG icons
+// IDs must match the proxy's CANDIDATE_GAMES exactly (no underscores)
 const GAMES: Game[] = [
     {
-        id: "flight_school",
+        id: "flightschool",
         name: "Flight School",
         icon: "/gamelogos/FlightSchool.svg",
         color: "#E94B3C",
-        tableName: "flight_school_leaderboard",
+        tableName: "flightschool_leaderboard",
     },
     {
-        id: "haunted_hull",
+        id: "hauntedhull",
         name: "Haunted Hull",
         icon: "/gamelogos/HauntedHull.svg",
         color: "#F39C12",
-        tableName: "haunted_hull_leaderboard",
+        tableName: "hauntedhull_leaderboard",
     },
 
     {
-        id: "sea_raceway",
+        id: "searaceway",
         name: "Sea Raceway",
         icon: "/gamelogos/SeaRaceway.svg",
         color: "#1ABC9C",
-        tableName: "sea_raceway_leaderboard",
+        tableName: "searaceway_leaderboard",
     },
     {
-        id: "super_soakers",
+        id: "supersoakers",
         name: "Super Soakers",
         icon: "/gamelogos/SuperSoakers.svg",
         color: "#E67E22",
-        tableName: "super_soakers_leaderboard",
+        tableName: "supersoakers_leaderboard",
     },
 
     {
         id: "multiverse",
-        name: "multiverse",
+        name: "Multiverse",
         icon: "/gamelogos/Multiverse.svg",
         color: "#8E44AD",
-        tableName: "unknown_leaderboard",
+        tableName: "multiverse_leaderboard",
     },
     {
-        id: "unknown2",
-        name: "unknown",
+        id: "deepdivers",
+        name: "Deep Divers",
         icon: "/gamelogos/placeholder.svg",
-        color: "#8E44AD",
-        tableName: "unknown_leaderboard",
+        color: "#2980B9",
+        tableName: "deepdivers_leaderboard",
     },
     {
-        id: "cloud_riders",
-        name: "Cloud Riders",
+        id: "deliveryofdoom",
+        name: "Delivery of Doom",
         icon: "/gamelogos/placeholder.svg",
         color: "#4A90E2",
-        tableName: "cloud_riders_leaderboard",
+        tableName: "deliveryofdoom_leaderboard",
     },
     {
-        id: "oxygen_heist",
+        id: "oxygenheist",
         name: "Oxygen Heist",
         icon: "/gamelogos/placeholder.svg",
         color: "#9B59B6",
-        tableName: "oxygen_heist_leaderboard",
+        tableName: "oxygenheist_leaderboard",
     },
     {
-        id: "unknown3",
-        name: "unknown",
-        icon: "/gamelogos/placeholder.svg",
-        color: "#8E44AD",
-        tableName: "unknown_leaderboard",
-    },
-    {
-        id: "nemesis_rising",
+        id: "nemesisrising",
         name: "Nemesis Rising",
         icon: "/gamelogos/placeholder.svg",
         color: "#F1C40F",
-        tableName: "nemesis_rising_leaderboard",
+        tableName: "nemesisrising_leaderboard",
+    },
+    {
+        id: "unknown",
+        name: "Unknown",
+        icon: "/gamelogos/placeholder.svg",
+        color: "#8E44AD",
+        tableName: "unknown_leaderboard",
     },
 ];
 
@@ -882,20 +883,20 @@ const GhostAnimation = () => (
 // You can add more animations here for other games!
 const CUSTOM_ANIMATIONS: Record<string, React.FC> = {
     // Existing
-    haunted_hull: GhostAnimation,
+    hauntedhull: GhostAnimation,
 
     // New Additions
-    flight_school: FlightSchoolAnimation,
-    sea_raceway: SeaRacewayAnimation,
-    super_soakers: SuperSoakersAnimation,
+    flightschool: FlightSchoolAnimation,
+    searaceway: SeaRacewayAnimation,
+    supersoakers: SuperSoakersAnimation,
     multiverse: MultiverseAnimation,
-    cloud_riders: CloudRidersAnimation,
-    oxygen_heist: OxygenHeistAnimation,
-    nemesis_rising: NemesisRisingAnimation,
+    deliveryofdoom: CloudRidersAnimation,
+    oxygenheist: OxygenHeistAnimation,
+    nemesisrising: NemesisRisingAnimation,
 
     // Assigning the same animation to multiple "unknown" games
-    unknown2: UnknownAnimation,
-    unknown3: UnknownAnimation,
+    unknown: UnknownAnimation,
+    deepdivers: UnknownAnimation,
 };
 
 // --- The Main Animation Wrapper Component ---
