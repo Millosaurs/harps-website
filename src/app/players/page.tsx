@@ -945,7 +945,7 @@ const GameLeaderboards: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const { perGameTeamScores, perGamePlayerScores, teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected, lastScoreUpdate, lastTeamUpdate } = useEventWebSocket();
+    const { perGameTeamScores, perGamePlayerScores, teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected } = useEventWebSocket();
 
     // Fetch leaderboard data for specific game (with loading spinner — used on mount/game switch)
     const fetchGameData = async (game: Game): Promise<void> => {
@@ -1006,19 +1006,15 @@ const GameLeaderboards: React.FC = () => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
 
-    // Silent re-fetch when a new player joins (TEAM_UPDATE via WS)
+    // Poll for fresh data every 5 seconds (silently, no loading flash).
+    // This picks up score changes, new players, etc. without hammering
+    // the API on every single WS message.
     useEffect(() => {
-        if (lastTeamUpdate > 0) {
+        const interval = setInterval(() => {
             silentRefresh(selectedGame);
-        }
-    }, [lastTeamUpdate]);
-
-    // Silent re-fetch when scores change (SCORE_UPDATE via WS)
-    useEffect(() => {
-        if (lastScoreUpdate > 0) {
-            silentRefresh(selectedGame);
-        }
-    }, [lastScoreUpdate]);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [selectedGame]);
 
     // Apply WS score updates directly to gameData — no re-fetch, no loading flash.
     // For "overall", use cumulative totals; for specific games, ONLY use per-game
