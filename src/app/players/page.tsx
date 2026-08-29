@@ -50,6 +50,13 @@ interface ApiResponse<T> {
 // IDs must match the proxy's CANDIDATE_GAMES exactly (no underscores)
 const GAMES: Game[] = [
     {
+        id: "supersoakers",
+        name: "Super Soakers",
+        icon: "/gamelogos/SuperSoakers.svg",
+        color: "#E67E22",
+        tableName: "supersoakers_leaderboard",
+    },
+    {
         id: "flightschool",
         name: "Flight School",
         icon: "/gamelogos/FlightSchool.svg",
@@ -63,7 +70,6 @@ const GAMES: Game[] = [
         color: "#F39C12",
         tableName: "hauntedhull_leaderboard",
     },
-
     {
         id: "searaceway",
         name: "Sea Raceway",
@@ -72,13 +78,19 @@ const GAMES: Game[] = [
         tableName: "searaceway_leaderboard",
     },
     {
-        id: "supersoakers",
-        name: "Super Soakers",
-        icon: "/gamelogos/SuperSoakers.svg",
-        color: "#E67E22",
-        tableName: "supersoakers_leaderboard",
+        id: "oxygenheist",
+        name: "Oxygen Heist",
+        icon: "/gamelogos/placeholder.svg",
+        color: "#9B59B6",
+        tableName: "oxygenheist_leaderboard",
     },
-
+    {
+        id: "nemesisrising",
+        name: "Nemesis Rising",
+        icon: "/gamelogos/placeholder.svg",
+        color: "#F1C40F",
+        tableName: "nemesisrising_leaderboard",
+    },
     {
         id: "multiverse",
         name: "Multiverse",
@@ -99,27 +111,6 @@ const GAMES: Game[] = [
         icon: "/gamelogos/placeholder.svg",
         color: "#4A90E2",
         tableName: "deliveryofdoom_leaderboard",
-    },
-    {
-        id: "oxygenheist",
-        name: "Oxygen Heist",
-        icon: "/gamelogos/placeholder.svg",
-        color: "#9B59B6",
-        tableName: "oxygenheist_leaderboard",
-    },
-    {
-        id: "nemesisrising",
-        name: "Nemesis Rising",
-        icon: "/gamelogos/placeholder.svg",
-        color: "#F1C40F",
-        tableName: "nemesisrising_leaderboard",
-    },
-    {
-        id: "unknown",
-        name: "Unknown",
-        icon: "/gamelogos/placeholder.svg",
-        color: "#8E44AD",
-        tableName: "unknown_leaderboard",
     },
 ];
 
@@ -894,8 +885,7 @@ const CUSTOM_ANIMATIONS: Record<string, React.FC> = {
     oxygenheist: OxygenHeistAnimation,
     nemesisrising: NemesisRisingAnimation,
 
-    // Assigning the same animation to multiple "unknown" games
-    unknown: UnknownAnimation,
+    // Assigning the same animation to deep divers until it gets its own
     deepdivers: UnknownAnimation,
 };
 
