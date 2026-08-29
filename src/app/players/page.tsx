@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useEventWebSocket } from "@/hooks/useEventWebSocket";
 
 // Type definitions
 interface Player {
@@ -904,6 +905,8 @@ const GameLeaderboards: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+    const { teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected, lastScoreUpdate } = useEventWebSocket();
+
     // Fetch leaderboard data for specific game
     const fetchGameData = async (game: Game): Promise<void> => {
         setLoading(true);
@@ -941,6 +944,13 @@ const GameLeaderboards: React.FC = () => {
     useEffect(() => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
+
+    // Re-fetch data from API when WebSocket notifies us of score changes
+    useEffect(() => {
+        if (lastScoreUpdate > 0) {
+            fetchGameData(selectedGame);
+        }
+    }, [lastScoreUpdate]);
 
     const handleGameSelect = (game: Game): void => {
         if (game.id !== selectedGame.id) {
@@ -1070,8 +1080,9 @@ const GameLeaderboards: React.FC = () => {
                                     <span>🏆</span>
                                     <span>Team Rankings</span>
                                 </h2>
-                                <span className="text-gray-400 text-xs sm:text-sm md:text-sm lg:text-sm">
-                                    {gameData.teams.length} teams
+                                <span className="text-gray-400 text-xs sm:text-sm md:text-sm lg:text-sm flex items-center space-x-2">
+                                    <span>{gameData.teams.length} teams</span>
+                                    <div className={`w-2 h-2 rounded-full ${wsConnected ? 'bg-green-500' : 'bg-red-500'}`} title={wsConnected ? 'Live Updates Active' : 'Live Updates Disconnected'} />
                                 </span>
                             </div>
 

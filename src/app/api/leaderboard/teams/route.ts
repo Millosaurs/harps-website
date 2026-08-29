@@ -14,10 +14,11 @@ export async function GET(request: NextRequest) {
   const gameId = request.nextUrl.searchParams.get("game");
 
   try {
-    // Fetch teams and full event data in parallel
-    const [teamsRes, eventRes] = await Promise.all([
+    // Fetch teams, event, and scores data in parallel
+    const [teamsRes, eventRes, scoresRes] = await Promise.all([
       fetch(`${PROXY_API_URL}/api/teams/${EVENT_ID}`, { next: { revalidate: 10 } }),
       fetch(`${PROXY_API_URL}/api/event/${EVENT_ID}`, { next: { revalidate: 10 } }),
+      fetch(`${PROXY_API_URL}/api/scores/${EVENT_ID}`, { next: { revalidate: 10 } }),
     ]);
 
     if (!teamsRes.ok) {
@@ -29,6 +30,7 @@ export async function GET(request: NextRequest) {
 
     const teamsJson = await teamsRes.json();
     const eventJson = eventRes.ok ? await eventRes.json() : null;
+    const scoresJson = scoresRes.ok ? await scoresRes.json() : null;
 
     // Build team roster lookup: team name → UUID[]
     const rosterByTeam: Record<string, string[]> = {};
@@ -40,17 +42,14 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Check for per-game scores in the event export's game history
-    // The event export may include: gameHistory: [{ gameId, teamScores: { "Orca": 5 }, playerScores: { "uuid": 3 } }]
-    let perGameTeamScores: Record<string, number> | null = null;
-    if (gameId && eventJson?.gameHistory) {
-      const gameResult = eventJson.gameHistory.find(
-        (g: { gameId: string }) => g.gameId === gameId,
-      );
-      if (gameResult?.teamScores) {
-        perGameTeamScores = gameResult.teamScores;
-      }
+    // Check for per-game team scores from the proxy
+    let teamScoresMap: Record<string, number> | null = null;
+    if (gameId && scoresJson?.perGameTeamScores?.[gameId]) {
+      teamScoresMap = scoresJson.perGameTeamScores[gameId];
     }
+    
+    // fallback to cumulative
+    const resolvedTeamScores = teamScoresMap || (scoresJson?.teamScores ?? {});
 
     // Collect all unique UUIDs across all teams and resolve them to usernames
     const allUuids = [...new Set(Object.values(rosterByTeam).flat())];
@@ -67,8 +66,8 @@ export async function GET(request: NextRequest) {
     const teams = (teamsJson.teams as ProxyTeam[])
       .map((t: ProxyTeam) => {
         const roster = rosterByTeam[t.name] ?? [];
-        // Use per-game score if available, otherwise cumulative
-        const score = perGameTeamScores ? (perGameTeamScores[t.name] ?? 0) : (t.score ?? 0);
+        // Use resolved score if available, otherwise 0
+        const score = resolvedTeamScores[t.name] ?? (t.score ?? 0);
         return {
           rank: 0,
           name: t.name,

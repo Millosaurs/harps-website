@@ -41,15 +41,10 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Check for per-game player scores in the event export's game history
+    // Check for per-game player scores from the proxy
     let playerScores: Record<string, number> | null = null;
-    if (gameId && eventJson?.gameHistory) {
-      const gameResult = eventJson.gameHistory.find(
-        (g: { gameId: string }) => g.gameId === gameId,
-      );
-      if (gameResult?.playerScores) {
-        playerScores = gameResult.playerScores;
-      }
+    if (gameId && scoresJson.perGamePlayerScores?.[gameId]) {
+      playerScores = scoresJson.perGamePlayerScores[gameId];
     }
     
     // If we didn't find per-game scores, fallback to cumulative

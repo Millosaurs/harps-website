@@ -95,3 +95,4 @@ export async function resolveUsernames(
 export const PROXY_API_URL =
   process.env.PROXY_API_URL ?? "http://localhost:8080";
 export const EVENT_ID = process.env.EVENT_ID ?? "creator-splash-001";
+export const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:8081";
