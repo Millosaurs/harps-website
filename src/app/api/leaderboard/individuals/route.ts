@@ -47,8 +47,11 @@ export async function GET(request: NextRequest) {
       playerScores = scoresJson.perGamePlayerScores[gameId];
     }
     
-    // If we didn't find per-game scores, fallback to cumulative
-    const resolvedScores: Record<string, number> = playerScores || (scoresJson.playerScores ?? {});
+    // If a specific game was requested but hasn't been played, show empty (not cumulative).
+    // Only fall back to cumulative when no game filter is specified (i.e. "overall").
+    const resolvedScores: Record<string, number> = gameId
+      ? (playerScores ?? {})
+      : (scoresJson.playerScores ?? {});
 
     // Combine players who have scores + all players in teams (so we show 0-score players)
     const allUuids = [...new Set([

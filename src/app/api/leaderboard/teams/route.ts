@@ -48,8 +48,11 @@ export async function GET(request: NextRequest) {
       teamScoresMap = scoresJson.perGameTeamScores[gameId];
     }
     
-    // fallback to cumulative
-    const resolvedTeamScores = teamScoresMap || (scoresJson?.teamScores ?? {});
+    // If a specific game was requested but hasn't been played, show empty (not cumulative).
+    // Only fall back to cumulative when no game filter is specified (i.e. "overall").
+    const resolvedTeamScores = gameId
+      ? (teamScoresMap ?? {})
+      : (scoresJson?.teamScores ?? {});
 
     // Collect all unique UUIDs across all teams and resolve them to usernames
     const allUuids = [...new Set(Object.values(rosterByTeam).flat())];
