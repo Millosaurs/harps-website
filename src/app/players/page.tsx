@@ -112,6 +112,13 @@ const GAMES: Game[] = [
         color: "#4A90E2",
         tableName: "deliveryofdoom_leaderboard",
     },
+    {
+        id: "overall",
+        name: "Overall",
+        icon: "/logo.png",
+        color: "#39d1ff",
+        tableName: "overall_leaderboard",
+    },
 ];
 
 // ⭐ ADDED: New constant for all team icons
@@ -256,25 +263,31 @@ interface GameIconProps {
     onClick: (game: Game) => void;
 }
 
-const GameIcon: React.FC<GameIconProps> = ({ game, isSelected, onClick }) => (
-    <button
-        onClick={() => onClick(game)}
-        className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-20 lg:h-20 flex-shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 lg:transform lg:hover:scale-110 focus:outline-none p-0`}
-        style={{
-            backgroundColor: isSelected ? `${game.color}40` : `${game.color}20`,
-        }}
-        title={game.name}
-        type="button"
-    >
-        <Image
-            src={game.icon}
-            alt={game.name}
-            width={86}
-            height={86}
-            className="w-full h-full object-fit"
-        />
-    </button>
-);
+const GameIcon: React.FC<GameIconProps> = ({ game, isSelected, onClick }) => {
+    const isOverall = game.id === "overall";
+    return (
+        <button
+            onClick={() => onClick(game)}
+            className={`${isOverall
+                ? "w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 lg:w-24 lg:h-24 ml-4 lg:ml-6 border-2 border-cyan-400/50"
+                : "w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-20 lg:h-20"
+            } flex-shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 lg:transform lg:hover:scale-110 focus:outline-none p-0`}
+            style={{
+                backgroundColor: isSelected ? `${game.color}40` : `${game.color}20`,
+            }}
+            title={game.name}
+            type="button"
+        >
+            <Image
+                src={game.icon}
+                alt={game.name}
+                width={isOverall ? 100 : 86}
+                height={isOverall ? 100 : 86}
+                className="w-full h-full object-fit"
+            />
+        </button>
+    );
+};
 
 interface MinecraftHeadProps {
     username: string;
@@ -942,11 +955,13 @@ const GameLeaderboards: React.FC = () => {
         try {
             // Fetch real data from the Next.js proxy routes
             // (which in turn fetch from EventCore-Proxy)
+            // For "overall", omit the game param to get cumulative scores
+            const gameParam = game.id === "overall" ? "" : `?game=${encodeURIComponent(game.id)}`;
             const [teamsResponse, individualsResponse] = await Promise.all([
-                fetch(`/api/leaderboard/teams?game=${encodeURIComponent(game.id)}`).then(
+                fetch(`/api/leaderboard/teams${gameParam}`).then(
                     (res) => res.json() as Promise<ApiResponse<Team[]>>,
                 ),
-                fetch(`/api/leaderboard/individuals?game=${encodeURIComponent(game.id)}`).then(
+                fetch(`/api/leaderboard/individuals${gameParam}`).then(
                     (res) => res.json() as Promise<ApiResponse<Individual[]>>,
                 ),
             ]);
@@ -973,10 +988,11 @@ const GameLeaderboards: React.FC = () => {
     }, [selectedGame]);
 
     // Apply WS score updates directly to gameData — no re-fetch, no loading flash.
-    // Prefer per-game scores for the selected game; fall back to cumulative totals.
+    // For "overall", use cumulative totals; for specific games, use per-game scores.
     useEffect(() => {
-        const gameTeamScores = perGameTeamScores?.[selectedGame.id] ?? wsTeamScores;
-        const gamePlayerScores = perGamePlayerScores?.[selectedGame.id] ?? wsPlayerScores;
+        const isOverall = selectedGame.id === "overall";
+        const gameTeamScores = isOverall ? wsTeamScores : (perGameTeamScores?.[selectedGame.id] ?? wsTeamScores);
+        const gamePlayerScores = isOverall ? wsPlayerScores : (perGamePlayerScores?.[selectedGame.id] ?? wsPlayerScores);
         if (!gameTeamScores && !gamePlayerScores) return;
 
         setGameData((prev) => {
