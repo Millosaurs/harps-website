@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { WS_URL, EVENT_ID } from "@/lib/api";
 
+interface Team {
+  [key: string]: unknown;
+}
+
+interface EventState {
+  [key: string]: unknown;
+}
+
 export function useEventWebSocket() {
   const [teamScores, setTeamScores] = useState<Record<string, number> | null>(null);
   const [playerScores, setPlayerScores] = useState<Record<string, number> | null>(null);
-  const [teams, setTeams] = useState<any[] | null>(null);
-  const [eventState, setEventState] = useState<any | null>(null);
+  const [teams, setTeams] = useState<Team[] | null>(null);
+  const [eventState, setEventState] = useState<EventState | null>(null);
   const [connected, setConnected] = useState(false);
   const [lastScoreUpdate, setLastScoreUpdate] = useState<number>(0);
 
