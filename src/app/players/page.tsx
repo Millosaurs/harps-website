@@ -947,15 +947,12 @@ const GameLeaderboards: React.FC = () => {
 
     const { perGameTeamScores, perGamePlayerScores, teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected, lastScoreUpdate, lastTeamUpdate } = useEventWebSocket();
 
-    // Fetch leaderboard data for specific game
+    // Fetch leaderboard data for specific game (with loading spinner — used on mount/game switch)
     const fetchGameData = async (game: Game): Promise<void> => {
         setLoading(true);
         setError(null);
 
         try {
-            // Fetch real data from the Next.js proxy routes
-            // (which in turn fetch from EventCore-Proxy)
-            // For "overall", omit the game param to get cumulative scores
             const gameParam = game.id === "overall" ? "" : `?game=${encodeURIComponent(game.id)}`;
             const [teamsResponse, individualsResponse] = await Promise.all([
                 fetch(`/api/leaderboard/teams${gameParam}`).then(
@@ -982,23 +979,44 @@ const GameLeaderboards: React.FC = () => {
         }
     };
 
-    // Load data when component mounts or game changes
+    // Silent background fetch — no loading spinner, no error flash
+    const silentRefresh = async (game: Game): Promise<void> => {
+        try {
+            const gameParam = game.id === "overall" ? "" : `?game=${encodeURIComponent(game.id)}`;
+            const [teamsResponse, individualsResponse] = await Promise.all([
+                fetch(`/api/leaderboard/teams${gameParam}`).then(
+                    (res) => res.json() as Promise<ApiResponse<Team[]>>,
+                ),
+                fetch(`/api/leaderboard/individuals${gameParam}`).then(
+                    (res) => res.json() as Promise<ApiResponse<Individual[]>>,
+                ),
+            ]);
+
+            setGameData({
+                teams: teamsResponse.data ?? [],
+                individuals: individualsResponse.data ?? [],
+            });
+        } catch {
+            // Silent — don't show errors for background refreshes
+        }
+    };
+
+    // Load data when component mounts or game changes (with loading spinner)
     useEffect(() => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
 
-    // Re-fetch when a new player joins (TEAM_UPDATE via WS)
+    // Silent re-fetch when a new player joins (TEAM_UPDATE via WS)
     useEffect(() => {
         if (lastTeamUpdate > 0) {
-            fetchGameData(selectedGame);
+            silentRefresh(selectedGame);
         }
     }, [lastTeamUpdate]);
 
-    // Re-fetch when scores change (SCORE_UPDATE via WS) — uses the API
-    // which now includes currentGamePlayerScores for live per-game data
+    // Silent re-fetch when scores change (SCORE_UPDATE via WS)
     useEffect(() => {
         if (lastScoreUpdate > 0) {
-            fetchGameData(selectedGame);
+            silentRefresh(selectedGame);
         }
     }, [lastScoreUpdate]);
 
