@@ -44,8 +44,15 @@ export async function GET(request: NextRequest) {
 
     // Check for per-game team scores from the proxy
     let teamScoresMap: Record<string, number> | null = null;
-    if (gameId && scoresJson?.perGameTeamScores?.[gameId]) {
-      teamScoresMap = scoresJson.perGameTeamScores[gameId];
+    if (gameId) {
+      // If this is the currently active game, use live scores
+      if (scoresJson?.currentGameId === gameId && scoresJson?.currentGameTeamScores) {
+        teamScoresMap = scoresJson.currentGameTeamScores;
+      }
+      // Otherwise check completed per-game scores
+      else if (scoresJson?.perGameTeamScores?.[gameId]) {
+        teamScoresMap = scoresJson.perGameTeamScores[gameId];
+      }
     }
     
     // If a specific game was requested but hasn't been played, show empty (not cumulative).

@@ -43,8 +43,15 @@ export async function GET(request: NextRequest) {
 
     // Check for per-game player scores from the proxy
     let playerScores: Record<string, number> | null = null;
-    if (gameId && scoresJson.perGamePlayerScores?.[gameId]) {
-      playerScores = scoresJson.perGamePlayerScores[gameId];
+    if (gameId) {
+      // If this is the currently active game, use live scores
+      if (scoresJson.currentGameId === gameId && scoresJson.currentGamePlayerScores) {
+        playerScores = scoresJson.currentGamePlayerScores;
+      }
+      // Otherwise check completed per-game scores
+      else if (scoresJson.perGamePlayerScores?.[gameId]) {
+        playerScores = scoresJson.perGamePlayerScores[gameId];
+      }
     }
     
     // If a specific game was requested but hasn't been played, show empty (not cumulative).

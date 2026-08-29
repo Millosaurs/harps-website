@@ -18,6 +18,8 @@ export function useEventWebSocket() {
   const [teams, setTeams] = useState<Team[] | null>(null);
   const [eventState, setEventState] = useState<EventState | null>(null);
   const [connected, setConnected] = useState(false);
+  const [lastScoreUpdate, setLastScoreUpdate] = useState(0);
+  const [lastTeamUpdate, setLastTeamUpdate] = useState(0);
 
   const ws = useRef<WebSocket | null>(null);
   const reconnectTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -63,9 +65,11 @@ export function useEventWebSocket() {
               if (msg.data.playerScores) setPlayerScores(msg.data.playerScores);
               if (msg.data.perGameTeamScores) setPerGameTeamScores(msg.data.perGameTeamScores);
               if (msg.data.perGamePlayerScores) setPerGamePlayerScores(msg.data.perGamePlayerScores);
+              setLastScoreUpdate(Date.now());
               break;
             case "TEAM_UPDATE":
               if (msg.data.teams) setTeams(msg.data.teams);
+              setLastTeamUpdate(Date.now());
               break;
             case "EVENT_STATE":
               if (msg.data) setEventState(msg.data);
@@ -96,6 +100,6 @@ export function useEventWebSocket() {
     };
   }, [connect]);
 
-  return { teamScores, playerScores, perGameTeamScores, perGamePlayerScores, teams, connected, eventState };
+  return { teamScores, playerScores, perGameTeamScores, perGamePlayerScores, teams, connected, eventState, lastScoreUpdate, lastTeamUpdate };
 }
 
