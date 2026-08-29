@@ -269,9 +269,9 @@ const GameIcon: React.FC<GameIconProps> = ({ game, isSelected, onClick }) => {
         <button
             onClick={() => onClick(game)}
             className={`${isOverall
-                ? "w-24 h-20 sm:w-26 sm:h-22 md:w-28 md:h-24 lg:w-28 lg:h-24 ml-4 lg:ml-6 border-2 border-cyan-400/50 p-2"
-                : "w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-20 lg:h-20 p-0"
-            } flex-shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 lg:transform lg:hover:scale-110 focus:outline-none`}
+                ? "w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 lg:w-24 lg:h-24 ml-6 lg:ml-8"
+                : "w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-20 lg:h-20"
+            } flex-shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 lg:transform lg:hover:scale-110 focus:outline-none p-1`}
             style={{
                 backgroundColor: isSelected ? `${game.color}40` : `${game.color}20`,
             }}
@@ -282,8 +282,8 @@ const GameIcon: React.FC<GameIconProps> = ({ game, isSelected, onClick }) => {
                 src={game.icon}
                 alt={game.name}
                 width={isOverall ? 120 : 86}
-                height={isOverall ? 100 : 86}
-                className={`${isOverall ? "object-contain" : "object-cover"} w-full h-full`}
+                height={isOverall ? 120 : 86}
+                className="w-full h-full object-contain"
             />
         </button>
     );
@@ -1121,9 +1121,12 @@ const GameLeaderboards: React.FC = () => {
                             <Image
                                 src={selectedGame.icon}
                                 alt={selectedGame.name}
-                                width={128}
-                                height={128}
-                                className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 ${selectedGame.id === "overall" ? "object-contain" : ""}`}
+                                width={256}
+                                height={256}
+                                className={`object-contain ${selectedGame.id === "overall"
+                                    ? "w-32 h-28 sm:w-40 sm:h-36 md:w-48 md:h-40 lg:w-56 lg:h-48"
+                                    : "w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
+                                }`}
                             />
                             <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold">
                                 {selectedGame.name}
