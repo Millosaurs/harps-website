@@ -12,13 +12,16 @@ interface EventState {
 export function useEventWebSocket() {
   const [teamScores, setTeamScores] = useState<Record<string, number> | null>(null);
   const [playerScores, setPlayerScores] = useState<Record<string, number> | null>(null);
-  // Per-game scores: { gameId: { teamName/uuid: score } }
   const [perGameTeamScores, setPerGameTeamScores] = useState<Record<string, Record<string, number>> | null>(null);
   const [perGamePlayerScores, setPerGamePlayerScores] = useState<Record<string, Record<string, number>> | null>(null);
+  // Current live game scores (game in progress)
+  const [currentGameId, setCurrentGameId] = useState<string | null>(null);
+  const [currentGameTeamScores, setCurrentGameTeamScores] = useState<Record<string, number> | null>(null);
+  const [currentGamePlayerScores, setCurrentGamePlayerScores] = useState<Record<string, number> | null>(null);
+
   const [teams, setTeams] = useState<Team[] | null>(null);
   const [eventState, setEventState] = useState<EventState | null>(null);
   const [connected, setConnected] = useState(false);
-  const [lastScoreUpdate, setLastScoreUpdate] = useState(0);
   const [lastTeamUpdate, setLastTeamUpdate] = useState(0);
 
   const ws = useRef<WebSocket | null>(null);
@@ -65,7 +68,10 @@ export function useEventWebSocket() {
               if (msg.data.playerScores) setPlayerScores(msg.data.playerScores);
               if (msg.data.perGameTeamScores) setPerGameTeamScores(msg.data.perGameTeamScores);
               if (msg.data.perGamePlayerScores) setPerGamePlayerScores(msg.data.perGamePlayerScores);
-              setLastScoreUpdate(Date.now());
+              // Current game live scores
+              setCurrentGameId(msg.data.currentGameId ?? null);
+              if (msg.data.currentGameTeamScores) setCurrentGameTeamScores(msg.data.currentGameTeamScores);
+              if (msg.data.currentGamePlayerScores) setCurrentGamePlayerScores(msg.data.currentGamePlayerScores);
               break;
             case "TEAM_UPDATE":
               if (msg.data.teams) setTeams(msg.data.teams);
@@ -100,6 +106,10 @@ export function useEventWebSocket() {
     };
   }, [connect]);
 
-  return { teamScores, playerScores, perGameTeamScores, perGamePlayerScores, teams, connected, eventState, lastScoreUpdate, lastTeamUpdate };
+  return {
+    teamScores, playerScores,
+    perGameTeamScores, perGamePlayerScores,
+    currentGameId, currentGameTeamScores, currentGamePlayerScores,
+    teams, connected, eventState, lastTeamUpdate,
+  };
 }
-

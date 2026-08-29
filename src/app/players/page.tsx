@@ -945,7 +945,14 @@ const GameLeaderboards: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const { perGameTeamScores, perGamePlayerScores, teamScores: wsTeamScores, playerScores: wsPlayerScores, connected: wsConnected } = useEventWebSocket();
+    const {
+        teamScores: wsTeamScores, playerScores: wsPlayerScores,
+        perGameTeamScores, perGamePlayerScores,
+        currentGameId: wsCurrentGameId,
+        currentGameTeamScores: wsCurrentGameTeamScores,
+        currentGamePlayerScores: wsCurrentGamePlayerScores,
+        connected: wsConnected, lastTeamUpdate,
+    } = useEventWebSocket();
 
     // Fetch leaderboard data for specific game (with loading spinner — used on mount/game switch)
     const fetchGameData = async (game: Game): Promise<void> => {
@@ -979,57 +986,46 @@ const GameLeaderboards: React.FC = () => {
         }
     };
 
-    // Silent background fetch — no loading spinner, no error flash
-    const silentRefresh = async (game: Game): Promise<void> => {
-        try {
-            const gameParam = game.id === "overall" ? "" : `?game=${encodeURIComponent(game.id)}`;
-            const [teamsResponse, individualsResponse] = await Promise.all([
-                fetch(`/api/leaderboard/teams${gameParam}`).then(
-                    (res) => res.json() as Promise<ApiResponse<Team[]>>,
-                ),
-                fetch(`/api/leaderboard/individuals${gameParam}`).then(
-                    (res) => res.json() as Promise<ApiResponse<Individual[]>>,
-                ),
-            ]);
-
-            setGameData({
-                teams: teamsResponse.data ?? [],
-                individuals: individualsResponse.data ?? [],
-            });
-        } catch {
-            // Silent — don't show errors for background refreshes
-        }
-    };
-
     // Load data when component mounts or game changes (with loading spinner)
     useEffect(() => {
         fetchGameData(selectedGame);
     }, [selectedGame]);
 
-    // Poll for fresh data every 5 seconds (silently, no loading flash).
-    // This picks up score changes, new players, etc. without hammering
-    // the API on every single WS message.
+    // Silent re-fetch when a new player joins (TEAM_UPDATE via WS)
     useEffect(() => {
-        const interval = setInterval(() => {
-            silentRefresh(selectedGame);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, [selectedGame]);
+        if (lastTeamUpdate > 0) {
+            // Silent fetch — no loading spinner
+            const gameParam = selectedGame.id === "overall" ? "" : `?game=${encodeURIComponent(selectedGame.id)}`;
+            Promise.all([
+                fetch(`/api/leaderboard/teams${gameParam}`).then(r => r.json() as Promise<ApiResponse<Team[]>>),
+                fetch(`/api/leaderboard/individuals${gameParam}`).then(r => r.json() as Promise<ApiResponse<Individual[]>>),
+            ]).then(([t, i]) => {
+                setGameData({ teams: t.data ?? [], individuals: i.data ?? [] });
+            }).catch(() => {});
+        }
+    }, [lastTeamUpdate]);
 
-    // Apply WS score updates directly to gameData — no re-fetch, no loading flash.
-    // For "overall", use cumulative totals; for specific games, ONLY use per-game
-    // scores if they exist (don't fall back to cumulative — that would leak scores
-    // from other games into this tab).
+    // Apply WS score updates directly to gameData — instant, no re-fetch, no flash.
+    // For "overall": use cumulative scores
+    // For specific games: use currentGame scores if it's the active game, or completed perGame scores
     useEffect(() => {
         const isOverall = selectedGame.id === "overall";
-        const gameTeamScores = isOverall
-            ? wsTeamScores
-            : (perGameTeamScores?.[selectedGame.id] ?? null);
-        const gamePlayerScores = isOverall
-            ? wsPlayerScores
-            : (perGamePlayerScores?.[selectedGame.id] ?? null);
+        let gameTeamScores: Record<string, number> | null = null;
+        let gamePlayerScores: Record<string, number> | null = null;
 
-        // Nothing to update for this game tab
+        if (isOverall) {
+            gameTeamScores = wsTeamScores;
+            gamePlayerScores = wsPlayerScores;
+        } else if (wsCurrentGameId === selectedGame.id) {
+            // This is the currently active game — use live scores
+            gameTeamScores = wsCurrentGameTeamScores;
+            gamePlayerScores = wsCurrentGamePlayerScores;
+        } else {
+            // Completed game — use stored per-game scores
+            gameTeamScores = perGameTeamScores?.[selectedGame.id] ?? null;
+            gamePlayerScores = perGamePlayerScores?.[selectedGame.id] ?? null;
+        }
+
         if (!gameTeamScores && !gamePlayerScores) return;
 
         setGameData((prev) => {
@@ -1059,7 +1055,7 @@ const GameLeaderboards: React.FC = () => {
 
             return { teams: updatedTeams, individuals: updatedIndividuals };
         });
-    }, [perGameTeamScores, perGamePlayerScores, wsTeamScores, wsPlayerScores, selectedGame.id]);
+    }, [wsTeamScores, wsPlayerScores, wsCurrentGameId, wsCurrentGameTeamScores, wsCurrentGamePlayerScores, perGameTeamScores, perGamePlayerScores, selectedGame.id]);
 
     const handleGameSelect = (game: Game): void => {
         if (game.id !== selectedGame.id) {
