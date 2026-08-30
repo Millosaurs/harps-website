@@ -1185,7 +1185,7 @@ const GameLeaderboards: React.FC = () => {
                         <div className="bg-slate-900/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-2xl border border-gray-700/50">
                             <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6 lg:mb-6">
                                 <h2 className="text-white text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold flex items-center space-x-2">
-                                    <span>🏆</span>
+                                    <img src="/trophy_icon.png" alt="Trophy" className="w-6 h-6 sm:w-7 sm:h-7 object-contain pixelated" />
                                     <span>Team Rankings</span>
                                 </h2>
                                 <span className="text-gray-400 text-xs sm:text-sm md:text-sm lg:text-sm flex items-center space-x-2">
@@ -1217,7 +1217,7 @@ const GameLeaderboards: React.FC = () => {
                         <div className="bg-slate-900/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-2xl border border-gray-700/50">
                             <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6 lg:mb-6">
                                 <h2 className="text-white text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold flex items-center space-x-2">
-                                    <span>👤</span>
+                                    <img src="/individual_icon.png" alt="Individual" className="w-5 h-5 sm:w-6 sm:h-6 object-contain pixelated" />
                                     <span>Individual Rankings</span>
                                 </h2>
                                 <span className="text-gray-400 text-xs sm:text-sm md:text-sm lg:text-sm">
